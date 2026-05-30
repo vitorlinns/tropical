@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   RiArrowRightLine,
-  RiFlightTakeoffLine,
   RiTimeLine,
   RiStarLine,
   RiUserLine,
@@ -44,16 +43,6 @@ export function CTASection() {
         }}
       />
 
-      {/* Avião decorativo */}
-      <motion.div
-        animate={shouldReduce ? {} : { y: [0, -12, 0], rotate: [-45, -43, -45] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-        className="absolute top-16 right-[8%] pointer-events-none"
-        aria-hidden="true"
-        style={{ opacity: 0.1 }}
-      >
-        <RiFlightTakeoffLine size={160} style={{ color: colors.white }} />
-      </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -78,7 +67,7 @@ export function CTASection() {
               style={{ color: colors.white }}
             >
               <AnimatedText text="Reserve sua"    className="block" />
-              <AnimatedText text="próxima viagem" className="block" delay={0.06} />
+              <AnimatedText text="próxima viagem " className="block" delay={0.06} />
               <AnimatedText text="agora."         className="block" delay={0.12} />
             </h2>
 

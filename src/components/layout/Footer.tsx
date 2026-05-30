@@ -157,7 +157,7 @@ export function Footer() {
                   onMouseEnter={(e) => { e.currentTarget.style.color = colors.white; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = SEMI; }}
                 >
-                  (11) 9 8432-7651
+                  (21) 9 8432-7651
                 </a>
               </div>
               <div>
@@ -191,7 +191,7 @@ export function Footer() {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            {[["Política de Privacidade", "#"], ["Termos de Uso", "#"]].map(([label, href]) => (
+            {[["Política de Privacidade", "/politica-de-privacidade"], ["Termos de Uso", "/termos-de-uso"]].map(([label, href]) => (
               <a
                 key={label}
                 href={href}

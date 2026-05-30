@@ -75,7 +75,7 @@ function CartButton({ transparent }: { transparent: boolean }) {
 }
 
 /* Páginas que sempre mostram o header com fundo branco (sem efeito de scroll) */
-const SOLID_HEADER_PATHS = ["/checkout"];
+const SOLID_HEADER_PATHS = ["/checkout", "/termos-de-uso", "/politica-de-privacidade"];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);

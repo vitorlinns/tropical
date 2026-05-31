@@ -5,6 +5,7 @@ import { Destinations } from "@/components/sections/Destinations";
 import { Stats }        from "@/components/sections/Stats";
 import { Calculator }   from "@/components/sections/Calculator";
 import { CardBlack }    from "@/components/sections/CardBlack";
+import { Blog }         from "@/components/sections/Blog";
 import { FAQ }          from "@/components/sections/FAQ";
 import { CTASection }   from "@/components/sections/CTASection";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Stats />
       <Calculator />
       <CardBlack />
+      <Blog />
       <FAQ />
       <CTASection />
     </>

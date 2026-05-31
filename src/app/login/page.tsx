@@ -177,7 +177,7 @@ export default function LoginPage() {
           {/* Voltar + logo */}
           <div className="flex items-center justify-between mb-10">
             <button
-              onClick={() => router.back()}
+              onClick={() => router.push("/")}
               className="flex items-center gap-1.5 text-sm focus-visible:outline-none hover:opacity-70 transition-opacity"
               style={{ color: colors.ink3, cursor: "pointer" }}
             >
@@ -258,10 +258,10 @@ export default function LoginPage() {
 
             <p className="text-center text-xs mt-6" style={{ color: colors.mutedLight }}>
               Ao continuar, você concorda com os{" "}
-              <a href="#" className="underline hover:opacity-70" style={{ color: colors.ink3, cursor: "pointer" }}>
+              <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: colors.ink3 }}>
                 Termos de uso
               </a>{" "}e a{" "}
-              <a href="#" className="underline hover:opacity-70" style={{ color: colors.ink3, cursor: "pointer" }}>
+              <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: colors.ink3 }}>
                 Política de privacidade
               </a>.
             </p>

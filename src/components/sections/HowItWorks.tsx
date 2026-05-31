@@ -98,7 +98,7 @@ export function HowItWorks() {
           whileInView="visible"
           viewport={{ once: true }}
           custom={0.4}
-          className="mt-12 flex items-center gap-4"
+          className="mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
         >
           <a
             href="#destinos"

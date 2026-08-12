@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tropical Milhas
 
-## Getting Started
+Site institucional e de vendas da Tropical Milhas agência que emite passagens aéreas usando milhas de cartão de crédito. Busca de voos, calculadora de milhas, carrinho de compras e checkout, além de páginas institucionais e legais (Termos de Uso, Política de Privacidade).
 
-First, run the development server:
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- [React 19](https://react.dev)
+- TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) tema e cores centralizados em `src/app/globals.css` via `@theme`
+- [Framer Motion](https://motion.dev) e [GSAP](https://gsap.com) para animações
+- [Remixicon](https://remixicon.com) e [Lucide](https://lucide.dev) para ícones
+- Fontes locais (Bricolage Grotesque e DM Sans) via `next/font/local`, servidas de `public/font`
+
+## Como rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Outros comandos:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # build de produção
+npm run start   # sobe o build de produção
+npm run lint    # eslint
+```
 
-## Learn More
+## Estrutura do projeto
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                  # rotas (App Router)
+│   ├── (main)/           # páginas com header/footer do site
+│   │   ├── page.tsx      # home
+│   │   ├── checkout/
+│   │   ├── termos-de-uso/
+│   │   └── politica-de-privacidade/
+│   └── login/            # login/cadastro (fora do grupo (main))
+├── sections/             # seções da home (Hero, FlightSearch, Destinations, Calculator, FAQ...)
+├── components/
+│   ├── layout/           # Header, Footer
+│   ├── legal/            # layout e blocos de conteúdo das páginas legais
+│   └── shared/           # componentes reutilizáveis (Input, Select, CartDialog, DestinationDrawer...)
+└── lib/
+    ├── data/             # dados mockados (voos, destinos, aeroportos)
+    ├── hooks/            # hooks compartilhados
+    ├── cart-context.tsx  # estado do carrinho (persistido em localStorage)
+    ├── animations.ts     # variantes do Framer Motion
+    └── utils.ts          # helpers (cn, fmtBRL, fmtNumber)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Não há backend: dados de voos/destinos são mockados em `src/lib/data`, e os fluxos de login e pagamento no checkout são simulados (sem persistência real de usuário nem processamento de pagamento).
+- Cores do design system vivem como variáveis CSS em `src/app/globals.css` (`--color-*`), e o Tailwind gera as utilities (`bg-brand`, `text-ink` etc.) automaticamente a partir delas.

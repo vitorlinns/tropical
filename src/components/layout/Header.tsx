@@ -13,6 +13,7 @@ import {
   RiCloseLine,
 } from "@remixicon/react";
 import Image from "next/image";
+import Link from "next/link";
 import { colors } from "@/lib/colors";
 import { useCart } from "@/lib/cart-context";
 import { CartDialog } from "@/components/shared/CartDialog";
@@ -78,7 +79,7 @@ export function Header() {
         aria-label="Navegação principal"
       >
         {/* Logo */}
-        <a
+        <Link
           href="/"
           className="flex-shrink-0 rounded-lg mr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           style={{ outline: "none" }}
@@ -92,7 +93,7 @@ export function Header() {
             className="h-10 w-auto"
             priority
           />
-        </a>
+        </Link>
 
         {/* Nav links */}
         <ul className="hidden lg:flex items-center gap-0.5 flex-1" role="list">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import {
   RiMailLine,
   RiLockLine,
@@ -11,7 +12,6 @@ import {
   RiEyeLine,
   RiEyeOffLine,
   RiArrowLeftLine,
-  type RemixiconComponentType,
 } from "@remixicon/react";
 import { colors } from "@/lib/colors";
 import { Input } from "@/components/shared/Input";
@@ -179,10 +179,10 @@ export default function LoginPage() {
               <RiArrowLeftLine size={16} aria-hidden="true" />
               Voltar
             </button>
-            <a href="/" aria-label="Tropical Milhas — início" style={{ cursor: "pointer" }}>
+            <Link href="/" aria-label="Tropical Milhas — início" style={{ cursor: "pointer" }}>
               <Image src="/isologo.png" alt="Tropical Milhas"
                 width={120} height={40} className="h-8 w-auto" priority />
-            </a>
+            </Link>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}

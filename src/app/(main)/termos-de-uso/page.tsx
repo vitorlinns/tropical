@@ -6,7 +6,6 @@ import {
 } from "@/components/legal/LegalPageLayout";
 import {
   P,
-  Sub,
   Strong,
   Bullets,
   Notice,

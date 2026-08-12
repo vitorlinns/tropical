@@ -128,7 +128,6 @@ export function Hero() {
   const [dir,      setDir]      = useState(1);
   const [progress, setProgress] = useState(0);
   const shouldReduce = useReducedMotion();
-  const intervalRef  = useRef<ReturnType<typeof setInterval> | null>(null);
   const rafRef       = useRef<number | null>(null);
   const startRef     = useRef<number>(0);
 

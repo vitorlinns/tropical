@@ -173,6 +173,49 @@ function AirportInput({
 }
 
 /* ─── Passenger selector ───────────────────────────────────── */
+function PaxCounter({
+  pax, setPax, field, label: lbl, sub,
+}: {
+  pax: Pax; setPax: (p: Pax) => void;
+  field: keyof Pax; label: string; sub: string;
+}) {
+  const val = pax[field];
+  const min = field === "adults" ? 1 : 0;
+  return (
+    <div className="flex items-center justify-between py-3"
+      style={{ borderBottom: `1px solid ${colors.border}` }}>
+      <div>
+        <p className="text-sm font-medium" style={{ color: colors.ink }}>{lbl}</p>
+        <p className="text-xs" style={{ color: colors.muted }}>{sub}</p>
+      </div>
+      <div className="flex items-center gap-3">
+        <button type="button"
+          onClick={() => setPax({ ...pax, [field]: Math.max(min, val - 1) })}
+          disabled={val <= min}
+          className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none disabled:opacity-30"
+          style={{ border: `1.5px solid ${colors.border}`, cursor: val > min ? "pointer" : "default" }}
+          onMouseEnter={(e) => { if (val > min) e.currentTarget.style.borderColor = colors.brand; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; }}
+          aria-label={`Reduzir ${lbl}`}
+        >
+          <RiSubtractLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
+        </button>
+        <span className="w-4 text-center font-semibold text-sm" style={{ color: colors.ink }}>{val}</span>
+        <button type="button"
+          onClick={() => setPax({ ...pax, [field]: val + 1 })}
+          className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none"
+          style={{ border: `1.5px solid ${colors.border}`, cursor: "pointer" }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.backgroundColor = colors.brandLight; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.backgroundColor = "transparent"; }}
+          aria-label={`Aumentar ${lbl}`}
+        >
+          <RiAddLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function PaxSelector({
   pax, setPax, cabinClass, setCabinClass,
 }: {
@@ -216,44 +259,6 @@ function PaxSelector({
     };
   }, [open, calcPos]);
 
-  const Counter = ({ field, label: lbl, sub }: { field: keyof Pax; label: string; sub: string }) => {
-    const val = pax[field];
-    const min = field === "adults" ? 1 : 0;
-    return (
-      <div className="flex items-center justify-between py-3"
-        style={{ borderBottom: `1px solid ${colors.border}` }}>
-        <div>
-          <p className="text-sm font-medium" style={{ color: colors.ink }}>{lbl}</p>
-          <p className="text-xs" style={{ color: colors.muted }}>{sub}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <button type="button"
-            onClick={() => setPax({ ...pax, [field]: Math.max(min, val - 1) })}
-            disabled={val <= min}
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none disabled:opacity-30"
-            style={{ border: `1.5px solid ${colors.border}`, cursor: val > min ? "pointer" : "default" }}
-            onMouseEnter={(e) => { if (val > min) e.currentTarget.style.borderColor = colors.brand; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; }}
-            aria-label={`Reduzir ${lbl}`}
-          >
-            <RiSubtractLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
-          </button>
-          <span className="w-4 text-center font-semibold text-sm" style={{ color: colors.ink }}>{val}</span>
-          <button type="button"
-            onClick={() => setPax({ ...pax, [field]: val + 1 })}
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none"
-            style={{ border: `1.5px solid ${colors.border}`, cursor: "pointer" }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.backgroundColor = colors.brandLight; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.backgroundColor = "transparent"; }}
-            aria-label={`Aumentar ${lbl}`}
-          >
-            <RiAddLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   const dropdown = dropPos && mounted && (
     <AnimatePresence>
       {open && (
@@ -273,9 +278,9 @@ function PaxSelector({
             padding: "1rem",
           }}
         >
-          <Counter field="adults"   label="Adultos"   sub="12 anos ou mais" />
-          <Counter field="children" label="Crianças"  sub="2 a 11 anos" />
-          <Counter field="infants"  label="Bebês"     sub="Até 23 meses" />
+          <PaxCounter pax={pax} setPax={setPax} field="adults"   label="Adultos"   sub="12 anos ou mais" />
+          <PaxCounter pax={pax} setPax={setPax} field="children" label="Crianças"  sub="2 a 11 anos" />
+          <PaxCounter pax={pax} setPax={setPax} field="infants"  label="Bebês"     sub="Até 23 meses" />
 
           {/* Classe */}
           <div className="mt-3">
@@ -351,6 +356,7 @@ function DatePicker({ id, label, value, onChange, min }: {
   const panelRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reposiciona o mês exibido quando a data muda por fora (ex.: outro campo do form); é a fonte de verdade externa, não estado derivado local.
     if (selDate) { setViewYear(selDate.getFullYear()); setViewMonth(selDate.getMonth()); }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);

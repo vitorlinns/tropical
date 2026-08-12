@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
+const bricolage = localFont({
+  src: "../../public/font/BricolageGrotesque-Variable.woff2",
   variable: "--font-bricolage",
   display: "swap",
+  weight: "200 800",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: "../../public/font/DMSans-Variable.woff2",
   variable: "--font-dm-sans",
   display: "swap",
+  weight: "100 1000",
 });
 
 export const metadata: Metadata = {

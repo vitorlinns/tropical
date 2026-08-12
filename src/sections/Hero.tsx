@@ -109,7 +109,7 @@ function FlightCard({ flight }: { flight: Flight }) {
           className={`flex items-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-transparent ${
             inCart
               ? "bg-white/20 text-white/70 cursor-default"
-              : "bg-brand hover:bg-brand-hover text-white"
+              : "bg-brand hover:bg-brand-hover text-white cursor-pointer"
           }`}
           aria-label={inCart ? "Já adicionado às suas compras" : `Adicionar ${flight.destination} às suas compras`}
           style={{ touchAction: "manipulation" }}
@@ -271,7 +271,7 @@ export function Hero() {
                   onClick={prev}
                   className="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   aria-label="Destino anterior"
-                  style={{ touchAction: "manipulation" }}
+                  style={{ touchAction: "manipulation", cursor: "pointer" }}
                 >
                   <RiArrowLeftLine size={18} aria-hidden="true" />
                 </button>
@@ -279,7 +279,7 @@ export function Hero() {
                   onClick={next}
                   className="w-11 h-11 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   aria-label="Próximo destino"
-                  style={{ touchAction: "manipulation" }}
+                  style={{ touchAction: "manipulation", cursor: "pointer" }}
                 >
                   <RiArrowRightLine size={18} aria-hidden="true" />
                 </button>
@@ -314,7 +314,7 @@ export function Hero() {
                 ? "h-20 border-white opacity-100"
                 : "h-12 border-transparent opacity-40 hover:opacity-70"
             }`}
-            style={{ touchAction: "manipulation" }}
+            style={{ touchAction: "manipulation", cursor: "pointer" }}
           >
             <Image
               src={f.image}

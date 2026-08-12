@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -14,8 +14,10 @@ import {
 } from "@remixicon/react";
 import { colors } from "@/lib/colors";
 import { useCart } from "@/lib/cart-context";
+import { useMounted } from "@/lib/hooks/useMounted";
 import { featuredFlights } from "@/lib/data/flights";
 import type { Destination } from "@/lib/data/destinations";
+import { fmtNumber } from "@/lib/utils";
 
 interface Props {
   destination: Destination | null;
@@ -126,7 +128,7 @@ function Panel({ destination: dest, onClose }: { destination: Destination; onClo
           <div>
             <p className="text-xs mb-0.5" style={{ color: colors.muted }}>A partir de</p>
             <p className="font-display font-bold text-2xl" style={{ color: colors.ink }}>
-              {Intl.NumberFormat("pt-BR").format(dest.miles)}
+              {fmtNumber(dest.miles)}
               <span className="text-sm font-normal ml-1.5" style={{ color: colors.muted }}>milhas</span>
             </p>
           </div>
@@ -174,7 +176,7 @@ function Panel({ destination: dest, onClose }: { destination: Destination; onClo
                       </div>
                       <div className="text-right flex-shrink-0">
                         <p className="font-display font-bold text-sm" style={{ color: colors.brand }}>
-                          {Intl.NumberFormat("pt-BR").format(flight.miles)}
+                          {fmtNumber(flight.miles)}
                         </p>
                         <p className="text-[10px]" style={{ color: colors.muted }}>milhas</p>
                       </div>
@@ -219,8 +221,7 @@ function Panel({ destination: dest, onClose }: { destination: Destination; onClo
 }
 
 export function DestinationDrawer({ destination, onClose }: Props) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useMounted();
   if (!mounted) return null;
 
   return createPortal(

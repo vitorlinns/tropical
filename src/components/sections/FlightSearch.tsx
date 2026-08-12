@@ -16,6 +16,7 @@ import {
 } from "@remixicon/react";
 import { colors } from "@/lib/colors";
 import { searchAirports, type Airport } from "@/lib/data/airports";
+import { useMounted } from "@/lib/hooks/useMounted";
 
 /* ─── Types ────────────────────────────────────────────────── */
 type TripType = "roundtrip" | "oneway";
@@ -42,11 +43,9 @@ function AirportInput({
   const [suggestions, setSuggestions] = useState<Airport[]>([]);
   const [open,        setOpen]        = useState(false);
   const [dropPos,     setDropPos]     = useState<{ top: number; left: number; width: number } | null>(null);
-  const [mounted,     setMounted]     = useState(false);
+  const mounted                       = useMounted();
   const inputRef  = useRef<HTMLInputElement>(null);
   const listRef   = useRef<HTMLUListElement>(null);
-
-  useEffect(() => { setMounted(true); }, []);
 
   const calcPos = useCallback(() => {
     if (!inputRef.current) return;
@@ -182,11 +181,9 @@ function PaxSelector({
 }) {
   const [open,    setOpen]    = useState(false);
   const [dropPos, setDropPos] = useState<{ top: number; left: number; width: number } | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const mounted                = useMounted();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const listRef    = useRef<HTMLDivElement>(null);
-
-  useEffect(() => { setMounted(true); }, []);
 
   const total = pax.adults + pax.children + pax.infants;
 
@@ -346,14 +343,12 @@ function DatePicker({ id, label, value, onChange, min }: {
 
   const [open,      setOpen]      = useState(false);
   const [dropPos,   setDropPos]   = useState<{ top: number; left: number; width: number } | null>(null);
-  const [mounted,   setMounted]   = useState(false);
+  const mounted                    = useMounted();
   const [viewYear,  setViewYear]  = useState(() => selDate ? selDate.getFullYear() : todayDate.getFullYear());
   const [viewMonth, setViewMonth] = useState(() => selDate ? selDate.getMonth()    : todayDate.getMonth());
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef   = useRef<HTMLDivElement>(null);
-
-  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (selDate) { setViewYear(selDate.getFullYear()); setViewMonth(selDate.getMonth()); }

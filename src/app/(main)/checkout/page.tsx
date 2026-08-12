@@ -18,6 +18,7 @@ import { colors } from "@/lib/colors";
 import { fadeUp } from "@/lib/animations";
 import { Input } from "@/components/shared/Input";
 import { Select } from "@/components/shared/Select";
+import { fmtBRL, fmtNumber } from "@/lib/utils";
 
 const SERVICE_FEE = 189;
 const MILE_RATE   = 0.025;
@@ -37,12 +38,10 @@ const MILE_PROGRAMS = [
   { value: "outro",     label: "Outro"             },
 ];
 
-function fmtBRL(v: number)   { return Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); }
-function fmtMiles(v: number) { return Intl.NumberFormat("pt-BR").format(v); }
 function parseMiles(s: string) { return parseInt(s.replace(/\D/g, ""), 10) || 0; }
 function maskMiles(s: string) {
   const n = s.replace(/\D/g, "");
-  return n ? Intl.NumberFormat("pt-BR").format(parseInt(n, 10)) : "";
+  return n ? fmtNumber(parseInt(n, 10)) : "";
 }
 
 export default function CheckoutPage() {
@@ -154,7 +153,7 @@ export default function CheckoutPage() {
                     <div className="text-right flex-shrink-0">
                       <p className="text-xs" style={{ color: colors.muted }}>Necessário</p>
                       <p className="font-bold" style={{ color: colors.ink }}>
-                        {fmtMiles(needed)}{" "}
+                        {fmtNumber(needed)}{" "}
                         <span className="text-xs font-normal" style={{ color: colors.muted }}>mi</span>
                       </p>
                     </div>
@@ -178,7 +177,7 @@ export default function CheckoutPage() {
                       id={`miles-${item.id}`}
                       value={inputVal}
                       onChange={(v) => setMilesInput(item.id, v)}
-                      placeholder={`Ex: ${fmtMiles(needed)}`}
+                      placeholder={`Ex: ${fmtNumber(needed)}`}
                       inputMode="numeric"
                     />
 
@@ -194,7 +193,7 @@ export default function CheckoutPage() {
                               Milhas suficientes!
                               {surplus > 0 && (
                                 <span className="ml-1" style={{ color: "#15803D" }}>
-                                  Sobrarão {fmtMiles(surplus)} milhas.
+                                  Sobrarão {fmtNumber(surplus)} milhas.
                                 </span>
                               )}
                             </span>
@@ -205,7 +204,7 @@ export default function CheckoutPage() {
                             <div className="flex items-start gap-2 text-sm" style={{ color: "#DC2626" }}>
                               <RiAlertLine size={15} className="flex-shrink-0 mt-0.5" aria-hidden="true" />
                               <div>
-                                <p className="font-semibold">Faltam {fmtMiles(shortage)} milhas</p>
+                                <p className="font-semibold">Faltam {fmtNumber(shortage)} milhas</p>
                                 <p className="text-xs mt-0.5" style={{ color: "#B91C1C" }}>
                                   Equivalente a aprox. {fmtBRL(shortage * MILE_RATE)} no mercado.
                                 </p>
@@ -217,10 +216,10 @@ export default function CheckoutPage() {
                         {/* Grid comparativo */}
                         <div className="grid grid-cols-3 gap-2 text-center text-xs">
                           {[
-                            { label: "Necessário",    value: fmtMiles(needed)   + " mi" },
-                            { label: "Suas milhas",   value: fmtMiles(userMiles)+ " mi" },
+                            { label: "Necessário",    value: fmtNumber(needed)   + " mi" },
+                            { label: "Suas milhas",   value: fmtNumber(userMiles)+ " mi" },
                             { label: sufficient ? "Sobra" : "Faltam",
-                              value: fmtMiles(sufficient ? surplus : shortage) + " mi",
+                              value: fmtNumber(sufficient ? surplus : shortage) + " mi",
                               color: sufficient ? "#16A34A" : colors.danger },
                           ].map((col) => (
                             <div key={col.label} className="rounded-lg p-2"
@@ -268,12 +267,12 @@ export default function CheckoutPage() {
             </div>
             <div className="flex justify-between">
               <span style={{ color: colors.ink3 }}>Milhas necessárias</span>
-              <span style={{ color: colors.ink }}>{fmtMiles(totalMilesNeeded)} mi</span>
+              <span style={{ color: colors.ink }}>{fmtNumber(totalMilesNeeded)} mi</span>
             </div>
             {totalShortage > 0 && (
               <div className="flex justify-between">
                 <span style={{ color: colors.danger }}>
-                  Milhas em falta ({fmtMiles(totalShortage)} mi)
+                  Milhas em falta ({fmtNumber(totalShortage)} mi)
                 </span>
                 <span style={{ color: colors.danger }}>+ {fmtBRL(shortageAmount)}</span>
               </div>

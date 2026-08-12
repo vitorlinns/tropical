@@ -8,6 +8,7 @@ import { destinations, type Destination } from "@/lib/data/destinations";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { fadeUp } from "@/lib/animations";
 import { DestinationDrawer } from "@/components/shared/DestinationDrawer";
+import { fmtNumber } from "@/lib/utils";
 
 export function Destinations() {
   const shouldReduce = useReducedMotion();
@@ -80,7 +81,7 @@ export function Destinations() {
                     <div className="text-right">
                       <p className="text-white font-semibold text-sm flex items-center gap-1">
                         <Plane size={12} aria-hidden="true" />
-                        {Intl.NumberFormat("pt-BR").format(dest.miles)}
+                        {fmtNumber(dest.miles)}
                       </p>
                       <p className="text-white/60 text-xs">milhas</p>
                     </div>

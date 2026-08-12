@@ -60,7 +60,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (stored) {
         const parsed = JSON.parse(stored);
         // Mantém apenas itens no formato atual; descarta lixo/legado.
-        if (Array.isArray(parsed)) setItems(parsed.filter(isValidCartItem));
+        if (Array.isArray(parsed)) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect -- hidrata do localStorage uma única vez após montar, de propósito, para não gerar mismatch de SSR.
+          setItems(parsed.filter(isValidCartItem));
+        }
       }
     } catch {
       // Ignora dados corrompidos ou storage indisponível.

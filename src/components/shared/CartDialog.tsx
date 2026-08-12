@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +14,8 @@ import {
 } from "@remixicon/react";
 import { useCart } from "@/lib/cart-context";
 import { colors } from "@/lib/colors";
+import { useMounted } from "@/lib/hooks/useMounted";
+import { fmtNumber } from "@/lib/utils";
 
 interface CartDialogProps {
   open: boolean;
@@ -181,7 +183,7 @@ function Panel({ onClose }: { onClose: () => void }) {
                       {item.flight.stops === "direto" ? "✈ Voo direto" : "✈ 1 escala"}
                     </span>
                     <span className="font-display font-bold text-sm" style={{ color: colors.brand }}>
-                      {Intl.NumberFormat("pt-BR").format(item.flight.miles)} milhas
+                      {fmtNumber(item.flight.miles)} milhas
                     </span>
                   </div>
                 </motion.div>
@@ -197,7 +199,7 @@ function Panel({ onClose }: { onClose: () => void }) {
               <span className="text-sm" style={{ color: colors.muted }}>Total estimado</span>
               <div className="text-right">
                 <span className="font-display font-bold text-lg" style={{ color: colors.ink }}>
-                  {Intl.NumberFormat("pt-BR").format(totalMiles)}
+                  {fmtNumber(totalMiles)}
                 </span>
                 <span className="text-sm ml-1" style={{ color: colors.muted }}>milhas</span>
               </div>
@@ -229,9 +231,7 @@ function Panel({ onClose }: { onClose: () => void }) {
 }
 
 export function CartDialog({ open, onClose }: CartDialogProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useMounted();
   if (!mounted) return null;
 
   return createPortal(

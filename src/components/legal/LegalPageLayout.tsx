@@ -87,6 +87,10 @@ export function LegalPageLayout({
             className="absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl"
             style={{ backgroundColor: "rgba(255,107,53,0.10)" }}
           />
+          <div
+            className="absolute inset-x-0 bottom-0 h-32 md:h-40"
+            style={{ background: `linear-gradient(to bottom, transparent, ${colors.white})` }}
+          />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6">

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiCheckLine } from "@remixicon/react";
 import { colors } from "@/lib/colors";
+import { useMounted } from "@/lib/hooks/useMounted";
 
 export interface SelectOption {
   value: string;
@@ -33,12 +34,10 @@ export function Select({
 }: SelectProps) {
   const [open, setOpen]       = useState(false);
   const [pos,  setPos]        = useState<DropdownPos | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const mounted                = useMounted();
   const triggerRef            = useRef<HTMLButtonElement>(null);
   const listRef               = useRef<HTMLUListElement>(null);
   const selected              = options.find((o) => o.value === value);
-
-  useEffect(() => { setMounted(true); }, []);
 
   /* Calcula posição do dropdown com base no trigger (coordenadas de viewport para position:fixed) */
   const updatePos = useCallback(() => {

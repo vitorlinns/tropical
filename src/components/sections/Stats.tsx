@@ -11,6 +11,7 @@ import {
 } from "@remixicon/react";
 import { fadeUp } from "@/lib/animations";
 import { colors } from "@/lib/colors";
+import { fmtNumber } from "@/lib/utils";
 
 const stats: {
   value: number;
@@ -47,7 +48,7 @@ function Counter({ target, prefix, suffix }: { target: number; prefix: string; s
 
   return (
     <span ref={ref}>
-      {prefix}{Intl.NumberFormat("pt-BR").format(count)}{suffix}
+      {prefix}{fmtNumber(count)}{suffix}
     </span>
   );
 }

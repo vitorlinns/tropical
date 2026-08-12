@@ -9,6 +9,7 @@ import { Input } from "@/components/shared/Input";
 import { destinations } from "@/lib/data/destinations";
 import { fadeUp } from "@/lib/animations";
 import { colors } from "@/lib/colors";
+import { fmtNumber } from "@/lib/utils";
 
 const programOptions = [
   { value: "livelo",   label: "Livelo"     },
@@ -34,7 +35,7 @@ export function Calculator() {
 
   const formatMiles = (val: string) => {
     const digits = val.replace(/\D/g, "");
-    return digits ? Intl.NumberFormat("pt-BR").format(parseInt(digits, 10)) : "";
+    return digits ? fmtNumber(parseInt(digits, 10)) : "";
   };
 
   return (
@@ -109,7 +110,7 @@ export function Calculator() {
                   <div className="rounded-xl p-4" style={{ backgroundColor: colors.surface }}>
                     {available.length > 0 ? (
                       <p className="text-xs font-semibold mb-3" style={{ color: colors.muted }}>
-                        {available.length} destino{available.length > 1 ? "s" : ""} com {Intl.NumberFormat("pt-BR").format(milesNum)} milhas
+                        {available.length} destino{available.length > 1 ? "s" : ""} com {fmtNumber(milesNum)} milhas
                       </p>
                     ) : (
                       <p className="text-sm font-medium" style={{ color: colors.muted }}>
@@ -129,7 +130,7 @@ export function Calculator() {
                               <div className="min-w-0">
                                 <p className="font-semibold text-xs truncate" style={{ color: colors.ink }}>{d.city}</p>
                                 <p className="text-xs truncate" style={{ color: colors.muted }}>
-                                  {Intl.NumberFormat("pt-BR").format(d.miles)} mi
+                                  {fmtNumber(d.miles)} mi
                                 </p>
                               </div>
                             </div>

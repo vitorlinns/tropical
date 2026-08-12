@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { featuredFlights, type Flight } from "@/lib/data/flights";
 import { useCart } from "@/lib/cart-context";
+import { fmtNumber } from "@/lib/utils";
 
 /* ─── Progress bar ─────────────────────────────────────────── */
 function ProgressBar({ active, total, progress }: { active: number; total: number; progress: number }) {
@@ -94,7 +95,7 @@ function FlightCard({ flight }: { flight: Flight }) {
         <div>
           <p className="text-white/50 text-[10px] uppercase tracking-wider">A partir de</p>
           <p className="font-display font-bold text-white text-lg leading-tight">
-            {Intl.NumberFormat("pt-BR").format(flight.miles)}
+            {fmtNumber(flight.miles)}
             <span className="text-white/60 font-normal text-sm ml-1">milhas</span>
           </p>
         </div>

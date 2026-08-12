@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Plane } from "lucide-react";
+import { RiFlightTakeoffLine } from "@remixicon/react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { Select } from "@/components/shared/Select";
 import { Input } from "@/components/shared/Input";
@@ -124,7 +124,7 @@ export function Calculator() {
                               style={{ backgroundColor: "var(--color-white)", border: `1px solid var(--color-border)` }}>
                               <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                                 style={{ backgroundColor: "var(--color-brand-light)" }}>
-                                <Plane size={13} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
+                                <RiFlightTakeoffLine size={13} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                               </div>
                               <div className="min-w-0">
                                 <p className="font-semibold text-xs truncate" style={{ color: "var(--color-ink)" }}>{d.city}</p>

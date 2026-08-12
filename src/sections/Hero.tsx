@@ -2,8 +2,12 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowLeft, Plane, Clock, MapPin } from "lucide-react";
 import {
+  RiArrowRightLine,
+  RiArrowLeftLine,
+  RiFlightTakeoffLine,
+  RiTimeLine,
+  RiMapPinLine,
   RiShoppingBag3Line,
   RiCheckLine,
 } from "@remixicon/react";
@@ -49,7 +53,7 @@ function FlightCard({ flight }: { flight: Flight }) {
         <div className="flex-1 flex flex-col items-center gap-1">
           <div className="flex items-center gap-1 w-full">
             <div className="h-px flex-1 bg-white/30" />
-            <Plane size={14} className="text-white/60 rotate-0" aria-hidden="true" />
+            <RiFlightTakeoffLine size={14} className="text-white/60 rotate-0" aria-hidden="true" />
             <div className="h-px flex-1 bg-white/30" />
           </div>
           <span className="text-white/40 text-[10px]">{flight.stops}</span>
@@ -84,7 +88,7 @@ function FlightCard({ flight }: { flight: Flight }) {
         <div>
           <p className="text-white/40 text-[10px] uppercase tracking-wider mb-1">Duração</p>
           <p className="text-white text-xs font-medium flex items-center gap-1">
-            <Clock size={10} aria-hidden="true" />
+            <RiTimeLine size={10} aria-hidden="true" />
             {flight.duration}
           </p>
         </div>
@@ -237,7 +241,7 @@ export function Hero() {
               className="mb-8"
             >
               <p className="text-white text-sm font-medium flex items-center gap-1.5 mb-3">
-                <MapPin size={13} aria-hidden="true" />
+                <RiMapPinLine size={13} aria-hidden="true" />
                 {flight.country}
               </p>
               <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight">
@@ -269,7 +273,7 @@ export function Hero() {
                   aria-label="Destino anterior"
                   style={{ touchAction: "manipulation" }}
                 >
-                  <ArrowLeft size={18} aria-hidden="true" />
+                  <RiArrowLeftLine size={18} aria-hidden="true" />
                 </button>
                 <button
                   onClick={next}
@@ -277,7 +281,7 @@ export function Hero() {
                   aria-label="Próximo destino"
                   style={{ touchAction: "manipulation" }}
                 >
-                  <ArrowRight size={18} aria-hidden="true" />
+                  <RiArrowRightLine size={18} aria-hidden="true" />
                 </button>
               </div>
 

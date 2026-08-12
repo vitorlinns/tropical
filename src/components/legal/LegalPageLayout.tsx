@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { List, ChevronDown, ArrowUp, Calendar } from "lucide-react";
+import { RiListUnordered, RiArrowDownSLine, RiArrowUpLine, RiCalendarLine } from "@remixicon/react";
 import { cn } from "@/lib/utils";
 
 export interface LegalSection {
@@ -131,7 +131,7 @@ export function LegalPageLayout({
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium shadow-sm"
               style={{ color: "var(--color-ink)", border: `1px solid var(--color-border)` }}
             >
-              <Calendar className="h-4 w-4" style={{ color: "var(--color-brand)" }} />
+              <RiCalendarLine className="h-4 w-4" style={{ color: "var(--color-brand)" }} />
               Última atualização: {lastUpdated}
             </motion.div>
           </div>
@@ -150,7 +150,7 @@ export function LegalPageLayout({
                   style={{ border: `1px solid var(--color-border)` }}
                 >
                   <div className="mb-4 flex items-center gap-2 px-2">
-                    <List className="h-4 w-4" style={{ color: "var(--color-brand)" }} />
+                    <RiListUnordered className="h-4 w-4" style={{ color: "var(--color-brand)" }} />
                     <span
                       className="font-display text-xs font-bold uppercase tracking-wider"
                       style={{ color: "var(--color-ink)" }}
@@ -186,9 +186,9 @@ export function LegalPageLayout({
                     className="font-display flex items-center gap-2 text-sm font-bold"
                     style={{ color: "var(--color-ink)" }}
                   >
-                    <List className="h-4 w-4" style={{ color: "var(--color-brand)" }} /> Sumário
+                    <RiListUnordered className="h-4 w-4" style={{ color: "var(--color-brand)" }} /> Sumário
                   </span>
-                  <ChevronDown
+                  <RiArrowDownSLine
                     className={cn("h-5 w-5 transition-transform", mobileOpen && "rotate-180")}
                     style={{ color: "var(--color-brand)" }}
                   />
@@ -275,7 +275,7 @@ export function LegalPageLayout({
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--color-brand)")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--color-ink)")}
           >
-            <ArrowUp className="h-5 w-5" />
+            <RiArrowUpLine className="h-5 w-5" />
           </motion.button>
         )}
       </AnimatePresence>

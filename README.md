@@ -9,7 +9,7 @@ Site institucional e de vendas da Tropical Milhas agência que emite passagens a
 - TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com) tema e cores centralizados em `src/app/globals.css` via `@theme`
 - [Framer Motion](https://motion.dev) e [GSAP](https://gsap.com) para animações
-- [Remixicon](https://remixicon.com) e [Lucide](https://lucide.dev) para ícones
+- [Remixicon](https://remixicon.com) para ícones
 - Fontes locais (Bricolage Grotesque e DM Sans) via `next/font/local`, servidas de `public/font`
 
 ## Como rodar

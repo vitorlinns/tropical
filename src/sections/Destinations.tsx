@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin, Plane } from "lucide-react";
+import { RiMapPinLine, RiFlightTakeoffLine } from "@remixicon/react";
 import Image from "next/image";
 import { destinations, type Destination } from "@/lib/data/destinations";
 import { AnimatedText } from "@/components/shared/AnimatedText";
@@ -74,13 +74,13 @@ export function Destinations() {
                     <div>
                       <p className="font-display font-bold text-white text-lg leading-tight">{dest.city}</p>
                       <p className="text-white/70 text-xs flex items-center gap-1 mt-0.5">
-                        <MapPin size={10} aria-hidden="true" />
+                        <RiMapPinLine size={10} aria-hidden="true" />
                         {dest.country}
                       </p>
                     </div>
                     <div className="text-right">
                       <p className="text-white font-semibold text-sm flex items-center gap-1">
-                        <Plane size={12} aria-hidden="true" />
+                        <RiFlightTakeoffLine size={12} aria-hidden="true" />
                         {fmtNumber(dest.miles)}
                       </p>
                       <p className="text-white/60 text-xs">milhas</p>

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Info, Mail, Phone, MapPin } from "lucide-react";
+import { RiInformationLine, RiMailLine, RiPhoneLine, RiMapPinLine } from "@remixicon/react";
 
 /** Parágrafo padrão de texto legal. */
 export function P({ children }: { children: ReactNode }) {
@@ -65,7 +65,7 @@ export function Notice({
       className="my-6 flex gap-3 rounded-2xl p-5"
       style={{ backgroundColor: "var(--color-brand-light)", border: `1px solid var(--color-brand-mid)` }}
     >
-      <Info className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--color-brand)" }} />
+      <RiInformationLine className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--color-brand)" }} />
       <div>
         {title && (
           <p className="mb-1 font-semibold" style={{ color: "var(--color-ink)" }}>
@@ -91,17 +91,17 @@ export function ContactCard({
   address?: string;
 }) {
   const items: { icon: ReactNode; label: string; value: string; href?: string }[] = [
-    { icon: <Mail className="h-5 w-5" />, label: "E-mail", value: email, href: `mailto:${email}` },
+    { icon: <RiMailLine className="h-5 w-5" />, label: "E-mail", value: email, href: `mailto:${email}` },
   ];
   if (phone)
     items.push({
-      icon: <Phone className="h-5 w-5" />,
+      icon: <RiPhoneLine className="h-5 w-5" />,
       label: "Telefone",
       value: phone,
       href: `tel:${phone.replace(/\D/g, "")}`,
     });
   if (address)
-    items.push({ icon: <MapPin className="h-5 w-5" />, label: "Endereço", value: address });
+    items.push({ icon: <RiMapPinLine className="h-5 w-5" />, label: "Endereço", value: address });
 
   return (
     <div className="mt-2 grid gap-4 sm:grid-cols-2">

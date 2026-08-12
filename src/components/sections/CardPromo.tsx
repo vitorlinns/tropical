@@ -16,7 +16,6 @@ import {
 } from "@remixicon/react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 
 const GOLD = "#D4AF37";
 
@@ -195,7 +194,7 @@ export function CardPromo() {
     <section
       className="py-28 relative overflow-hidden"
       aria-labelledby="card-title"
-      style={{ backgroundColor: colors.surface }}
+      style={{ backgroundColor: "var(--color-surface)" }}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -211,9 +210,9 @@ export function CardPromo() {
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6"
               style={{
-                backgroundColor: colors.brandLight,
-                color: colors.brand,
-                border: `1px solid ${colors.brandMid}`,
+                backgroundColor: "var(--color-brand-light)",
+                color: "var(--color-brand)",
+                border: `1px solid var(--color-brand-mid)`,
               }}
             >
               <RiFlightTakeoffLine size={13} aria-hidden="true" />
@@ -223,13 +222,13 @@ export function CardPromo() {
             <h2
               id="card-title"
               className="font-display font-bold text-4xl md:text-5xl leading-tight mb-6"
-              style={{ color: colors.ink }}
+              style={{ color: "var(--color-ink)" }}
             >
               <AnimatedText text="Faltou milhas?" className="block" />
-              <AnimatedText text="A gente resolve." className="block text-[#FF6B35]" delay={0.1} />
+              <AnimatedText text="A gente resolve." className="block text-brand" delay={0.1} />
             </h2>
 
-            <p className="text-base leading-relaxed mb-10" style={{ color: colors.muted }}>
+            <p className="text-base leading-relaxed mb-10" style={{ color: "var(--color-muted)" }}>
               Use o Cartão Tropical para cobrir a diferença e garantir sua passagem.
               Simples, rápido e sem burocracia.
             </p>
@@ -240,13 +239,13 @@ export function CardPromo() {
                   <div
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
-                      backgroundColor: colors.brandLight,
-                      border: `1px solid ${colors.brandMid}`,
+                      backgroundColor: "var(--color-brand-light)",
+                      border: `1px solid var(--color-brand-mid)`,
                     }}
                   >
-                    <Icon size={17} style={{ color: colors.brand }} aria-hidden="true" />
+                    <Icon size={17} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                   </div>
-                  <p className="text-sm" style={{ color: colors.ink3 }}>{text}</p>
+                  <p className="text-sm" style={{ color: "var(--color-ink-3)" }}>{text}</p>
                 </div>
               ))}
             </div>
@@ -254,7 +253,7 @@ export function CardPromo() {
             <a
               href="/login"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{ backgroundColor: colors.ink, color: colors.white }}
+              style={{ backgroundColor: "var(--color-ink)", color: "var(--color-white)" }}
             >
               Solicitar cartão
               <RiArrowRightLine size={16} aria-hidden="true" />

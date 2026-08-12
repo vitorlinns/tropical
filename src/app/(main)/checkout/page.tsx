@@ -14,7 +14,6 @@ import {
   RiUserLine,
 } from "@remixicon/react";
 import { useCart } from "@/lib/cart-context";
-import { colors } from "@/lib/colors";
 import { fadeUp } from "@/lib/animations";
 import { Input } from "@/components/shared/Input";
 import { Select } from "@/components/shared/Select";
@@ -73,16 +72,16 @@ export default function CheckoutPage() {
     setProgramInputs((p) => ({ ...p, [id]: val }));
 
   return (
-    <div className="min-h-screen pt-24 pb-20 px-4 md:px-6" style={{ backgroundColor: colors.surface }}>
+    <div className="min-h-screen pt-24 pb-20 px-4 md:px-6" style={{ backgroundColor: "var(--color-surface)" }}>
       <div className="max-w-2xl mx-auto">
 
         {/* Breadcrumb */}
         <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}
-          className="flex items-center gap-2 text-sm mb-8" style={{ color: colors.muted }}>
+          className="flex items-center gap-2 text-sm mb-8" style={{ color: "var(--color-muted)" }}>
           <button
             onClick={() => router.back()}
             className="flex items-center gap-1 hover:underline focus-visible:outline-none"
-            style={{ color: colors.brand, cursor: "pointer" }}
+            style={{ color: "var(--color-brand)", cursor: "pointer" }}
           >
             <RiArrowLeftLine size={14} aria-hidden="true" /> Voltar
           </button>
@@ -92,17 +91,17 @@ export default function CheckoutPage() {
 
         {/* Título + passageiros */}
         <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0.05} className="mb-8">
-          <h1 className="font-display font-bold text-3xl md:text-4xl" style={{ color: colors.ink }}>
+          <h1 className="font-display font-bold text-3xl md:text-4xl" style={{ color: "var(--color-ink)" }}>
             Resumo da compra
           </h1>
           <div className="flex items-center gap-2 mt-2">
-            <p className="text-sm" style={{ color: colors.muted }}>
+            <p className="text-sm" style={{ color: "var(--color-muted)" }}>
               Informe seu programa e quantas milhas você tem para calcular o valor final.
             </p>
           </div>
           {/* Badge 1 passageiro */}
           <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg text-xs font-medium"
-            style={{ backgroundColor: colors.surface2, color: colors.ink3 }}>
+            style={{ backgroundColor: "var(--color-surface-2)", color: "var(--color-ink-3)" }}>
             <RiUserLine size={13} aria-hidden="true" />
             1 passageiro · Preços por pessoa
           </div>
@@ -123,38 +122,38 @@ export default function CheckoutPage() {
             return (
               <motion.div key={item.id} variants={fadeUp} initial="hidden" animate="visible" custom={0.1 + i * 0.08}>
                 <div className="rounded-2xl overflow-hidden"
-                  style={{ border: `1px solid ${colors.border}`, backgroundColor: colors.white }}>
+                  style={{ border: `1px solid var(--color-border)`, backgroundColor: "var(--color-white)" }}>
 
                   {/* Header */}
                   <div className="flex items-center gap-4 p-5"
-                    style={{ borderBottom: `1px solid ${colors.border}` }}>
+                    style={{ borderBottom: `1px solid var(--color-border)` }}>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: colors.brandLight }}>
-                      <RiFlightTakeoffLine size={18} style={{ color: colors.brand }} aria-hidden="true" />
+                      style={{ backgroundColor: "var(--color-brand-light)" }}>
+                      <RiFlightTakeoffLine size={18} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-display font-bold text-base" style={{ color: colors.ink }}>
+                      <p className="font-display font-bold text-base" style={{ color: "var(--color-ink)" }}>
                         {item.flight.originCode} → {item.flight.destinationCode}
-                        <span className="font-normal text-sm ml-2" style={{ color: colors.muted }}>
+                        <span className="font-normal text-sm ml-2" style={{ color: "var(--color-muted)" }}>
                           {item.flight.destination}, {item.flight.country}
                         </span>
                       </p>
                       <div className="flex items-center gap-3 mt-0.5">
                         <div className="w-5 h-5 rounded bg-white border flex items-center justify-center overflow-hidden p-0.5"
-                          style={{ borderColor: colors.border }}>
+                          style={{ borderColor: "var(--color-border)" }}>
                           <Image src={item.flight.airlineLogo} alt={item.flight.airline}
                             width={16} height={16} className="object-contain w-full h-full" />
                         </div>
-                        <span className="text-xs" style={{ color: colors.muted }}>
+                        <span className="text-xs" style={{ color: "var(--color-muted)" }}>
                           {item.flight.airline} · {item.flight.flightClass} · {item.flight.stops}
                         </span>
                       </div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-xs" style={{ color: colors.muted }}>Necessário</p>
-                      <p className="font-bold" style={{ color: colors.ink }}>
+                      <p className="text-xs" style={{ color: "var(--color-muted)" }}>Necessário</p>
+                      <p className="font-bold" style={{ color: "var(--color-ink)" }}>
                         {fmtNumber(needed)}{" "}
-                        <span className="text-xs font-normal" style={{ color: colors.muted }}>mi</span>
+                        <span className="text-xs font-normal" style={{ color: "var(--color-muted)" }}>mi</span>
                       </p>
                     </div>
                   </div>
@@ -187,12 +186,12 @@ export default function CheckoutPage() {
                         transition={{ duration: 0.25 }} className="space-y-2">
                         {sufficient ? (
                           <div className="flex items-center gap-2 text-sm px-3 py-2.5 rounded-xl"
-                            style={{ backgroundColor: "#F0FDF4", color: "#16A34A" }}>
+                            style={{ backgroundColor: "var(--color-success-light)", color: "var(--color-success)" }}>
                             <RiCheckLine size={15} aria-hidden="true" />
                             <span>
                               Milhas suficientes!
                               {surplus > 0 && (
-                                <span className="ml-1" style={{ color: "#15803D" }}>
+                                <span className="ml-1" style={{ color: "var(--color-success-dark)" }}>
                                   Sobrarão {fmtNumber(surplus)} milhas.
                                 </span>
                               )}
@@ -200,12 +199,12 @@ export default function CheckoutPage() {
                           </div>
                         ) : (
                           <div className="rounded-xl p-3"
-                            style={{ backgroundColor: "#FEF2F2", border: `1px solid #FEE2E2` }}>
-                            <div className="flex items-start gap-2 text-sm" style={{ color: "#DC2626" }}>
+                            style={{ backgroundColor: "var(--color-danger-light)", border: `1px solid var(--color-danger-border)` }}>
+                            <div className="flex items-start gap-2 text-sm" style={{ color: "var(--color-danger-strong)" }}>
                               <RiAlertLine size={15} className="flex-shrink-0 mt-0.5" aria-hidden="true" />
                               <div>
                                 <p className="font-semibold">Faltam {fmtNumber(shortage)} milhas</p>
-                                <p className="text-xs mt-0.5" style={{ color: "#B91C1C" }}>
+                                <p className="text-xs mt-0.5" style={{ color: "var(--color-danger-strong-dark)" }}>
                                   Equivalente a aprox. {fmtBRL(shortage * MILE_RATE)} no mercado.
                                 </p>
                               </div>
@@ -220,13 +219,13 @@ export default function CheckoutPage() {
                             { label: "Suas milhas",   value: fmtNumber(userMiles)+ " mi" },
                             { label: sufficient ? "Sobra" : "Faltam",
                               value: fmtNumber(sufficient ? surplus : shortage) + " mi",
-                              color: sufficient ? "#16A34A" : colors.danger },
+                              color: sufficient ? "var(--color-success)" : "var(--color-danger)" },
                           ].map((col) => (
                             <div key={col.label} className="rounded-lg p-2"
-                              style={{ backgroundColor: colors.surface }}>
-                              <p style={{ color: colors.mutedLight }}>{col.label}</p>
+                              style={{ backgroundColor: "var(--color-surface)" }}>
+                              <p style={{ color: "var(--color-muted-light)" }}>{col.label}</p>
                               <p className="font-semibold mt-0.5"
-                                style={{ color: col.color ?? colors.ink }}>{col.value}</p>
+                                style={{ color: col.color ?? "var(--color-ink)" }}>{col.value}</p>
                             </div>
                           ))}
                         </div>
@@ -235,10 +234,10 @@ export default function CheckoutPage() {
 
                     {/* Taxa por voo */}
                     <div className="flex items-center justify-between pt-2">
-                      <span className="text-sm" style={{ color: colors.muted }}>
+                      <span className="text-sm" style={{ color: "var(--color-muted)" }}>
                         Taxa de emissão · 1 passageiro
                       </span>
-                      <span className="font-semibold text-sm" style={{ color: colors.ink }}>
+                      <span className="font-semibold text-sm" style={{ color: "var(--color-ink)" }}>
                         {fmtBRL(SERVICE_FEE)}
                       </span>
                     </div>
@@ -252,41 +251,41 @@ export default function CheckoutPage() {
         {/* Resumo total */}
         <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0.3}
           className="rounded-2xl p-5 mb-4"
-          style={{ backgroundColor: colors.brandLight, border: `1px solid ${colors.brandMid}` }}>
+          style={{ backgroundColor: "var(--color-brand-light)", border: `1px solid var(--color-brand-mid)` }}>
           <div className="flex items-center gap-2 mb-3">
-            <RiInformationLine size={16} style={{ color: colors.brand }} aria-hidden="true" />
-            <span className="text-sm font-semibold" style={{ color: colors.ink }}>Resumo do pedido</span>
+            <RiInformationLine size={16} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
+            <span className="text-sm font-semibold" style={{ color: "var(--color-ink)" }}>Resumo do pedido</span>
           </div>
 
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span style={{ color: colors.ink3 }}>
+              <span style={{ color: "var(--color-ink-3)" }}>
                 Taxa de emissão ({items.length} {items.length > 1 ? "passagens" : "passagem"})
               </span>
-              <span style={{ color: colors.ink }}>{fmtBRL(totalFee)}</span>
+              <span style={{ color: "var(--color-ink)" }}>{fmtBRL(totalFee)}</span>
             </div>
             <div className="flex justify-between">
-              <span style={{ color: colors.ink3 }}>Milhas necessárias</span>
-              <span style={{ color: colors.ink }}>{fmtNumber(totalMilesNeeded)} mi</span>
+              <span style={{ color: "var(--color-ink-3)" }}>Milhas necessárias</span>
+              <span style={{ color: "var(--color-ink)" }}>{fmtNumber(totalMilesNeeded)} mi</span>
             </div>
             {totalShortage > 0 && (
               <div className="flex justify-between">
-                <span style={{ color: colors.danger }}>
+                <span style={{ color: "var(--color-danger)" }}>
                   Milhas em falta ({fmtNumber(totalShortage)} mi)
                 </span>
-                <span style={{ color: colors.danger }}>+ {fmtBRL(shortageAmount)}</span>
+                <span style={{ color: "var(--color-danger)" }}>+ {fmtBRL(shortageAmount)}</span>
               </div>
             )}
             <div className="flex justify-between font-bold pt-1">
-              <span style={{ color: colors.ink }}>Total a pagar · por pessoa</span>
-              <span style={{ color: colors.brand }}>{fmtBRL(grandTotal)}</span>
+              <span style={{ color: "var(--color-ink)" }}>Total a pagar · por pessoa</span>
+              <span style={{ color: "var(--color-brand)" }}>{fmtBRL(grandTotal)}</span>
             </div>
           </div>
         </motion.div>
 
         {totalShortage > 0 && (
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="text-xs mb-4 text-center" style={{ color: colors.muted }}>
+            className="text-xs mb-4 text-center" style={{ color: "var(--color-muted)" }}>
             Você pode continuar mesmo sem milhas suficientes.
           </motion.p>
         )}
@@ -295,13 +294,13 @@ export default function CheckoutPage() {
           variants={fadeUp} initial="hidden" animate="visible" custom={0.4}
           onClick={() => router.push("/login")}
           className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-semibold text-base transition-opacity hover:opacity-90 focus-visible:outline-none"
-          style={{ backgroundColor: colors.brand, color: colors.white, cursor: "pointer" }}
+          style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)", cursor: "pointer" }}
         >
           Continuar
           <RiArrowRightLine size={18} aria-hidden="true" />
         </motion.button>
 
-        <p className="text-center text-xs mt-4" style={{ color: colors.mutedLight }}>
+        <p className="text-center text-xs mt-4" style={{ color: "var(--color-muted-light)" }}>
           É necessário ter uma conta para finalizar a compra.
         </p>
       </div>

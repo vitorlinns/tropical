@@ -19,9 +19,9 @@ export function Destinations() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-14">
-          <h2 id="dest-title" className="font-display font-bold text-4xl md:text-5xl text-[#111111] leading-tight">
+          <h2 id="dest-title" className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
             <AnimatedText text="Para onde você " className="block" />
-            <AnimatedText text="quer voar?" className="text-[#FF6B35] block" delay={0.1} />
+            <AnimatedText text="quer voar?" className="text-brand block" delay={0.1} />
           </h2>
         </div>
 
@@ -61,7 +61,7 @@ export function Destinations() {
                 <div className="absolute top-3 left-3">
                   <span className={`text-xs px-2 py-1 rounded-full font-medium ${
                     dest.directFlight
-                      ? "bg-[#FF6B35] text-white"
+                      ? "bg-brand text-white"
                       : "bg-black/40 text-white/80 backdrop-blur-sm"
                   }`}>
                     {dest.directFlight ? "Direto" : "Com escala"}

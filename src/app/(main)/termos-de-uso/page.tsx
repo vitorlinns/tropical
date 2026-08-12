@@ -36,7 +36,7 @@ const sections: LegalSection[] = [
           compreendido e concordado com estes Termos e com a nossa{" "}
           <Link
             href="/politica-de-privacidade"
-            className="font-semibold text-[#FF6B35] underline-offset-2 hover:underline"
+            className="font-semibold text-brand underline-offset-2 hover:underline"
           >
             Política de Privacidade
           </Link>
@@ -275,7 +275,7 @@ const sections: LegalSection[] = [
           O tratamento dos seus dados pessoais é regido pela nossa{" "}
           <Link
             href="/politica-de-privacidade"
-            className="font-semibold text-[#FF6B35] underline-offset-2 hover:underline"
+            className="font-semibold text-brand underline-offset-2 hover:underline"
           >
             Política de Privacidade
           </Link>
@@ -353,7 +353,7 @@ export default function TermosDeUsoPage() {
       badge="Termos & Condições"
       title={
         <>
-          Termos de <span className="text-[#FF6B35]">Uso</span>
+          Termos de <span className="text-brand">Uso</span>
         </>
       }
       description="As regras que garantem uma relação clara e segura entre você e a Tropical Milhas. Leia com atenção para aproveitar a plataforma com total tranquilidade."

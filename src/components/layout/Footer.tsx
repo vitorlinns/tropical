@@ -6,7 +6,6 @@ import {
   RiWhatsappLine,
   RiMailLine,
 } from "@remixicon/react";
-import { colors } from "@/lib/colors";
 import type { RemixiconComponentType } from "@remixicon/react";
 
 const NAV = [
@@ -40,9 +39,9 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <a
       href={href}
-      className="text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] rounded"
+      className="text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded"
       style={{ color: MUTED }}
-      onMouseEnter={(e) => { e.currentTarget.style.color = colors.white; }}
+      onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-white)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.color = MUTED; }}
     >
       {children}
@@ -52,7 +51,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: colors.ink }}>
+    <footer style={{ backgroundColor: "var(--color-ink)" }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Main grid */}
@@ -78,11 +77,11 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+                  className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   style={{ backgroundColor: "rgba(255,255,255,0.07)", color: SEMI }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.brand;
-                    e.currentTarget.style.color = colors.white;
+                    e.currentTarget.style.backgroundColor = "var(--color-brand)";
+                    e.currentTarget.style.color = "var(--color-white)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.07)";
@@ -140,7 +139,7 @@ export function Footer() {
                   href="mailto:contato@tropicalmilhas.com.br"
                   className="text-sm transition-colors duration-150 focus-visible:outline-none"
                   style={{ color: SEMI }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = colors.white; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-white)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = SEMI; }}
                 >
                   contato@tropicalmilhas.com.br
@@ -154,7 +153,7 @@ export function Footer() {
                   href="#"
                   className="text-sm transition-colors duration-150 focus-visible:outline-none"
                   style={{ color: SEMI }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = colors.white; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-white)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = SEMI; }}
                 >
                   (21) 9 8432-7651

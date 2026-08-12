@@ -14,7 +14,6 @@ import {
   RiFlightTakeoffLine,
   RiFlightLandLine,
 } from "@remixicon/react";
-import { colors } from "@/lib/colors";
 import { searchAirports, type Airport } from "@/lib/data/airports";
 import { useMounted } from "@/lib/hooks/useMounted";
 
@@ -105,8 +104,8 @@ function AirportInput({
             position: "fixed",
             top: dropPos.top, left: dropPos.left, width: dropPos.width,
             zIndex: 49,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.border}`,
+            backgroundColor: "var(--color-white)",
+            border: `1px solid var(--color-border)`,
             borderRadius: "0.875rem",
             boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
             overflowY: "auto",
@@ -121,16 +120,16 @@ function AirportInput({
                 onClick={() => handleSelect(a)}
                 className="w-full flex items-center gap-3 px-4 py-3 text-left text-sm focus-visible:outline-none transition-colors"
                 style={{ cursor: "pointer" }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.surface; }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-surface)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 font-mono font-bold text-xs"
-                  style={{ backgroundColor: colors.brandLight, color: colors.brand }}>
+                  style={{ backgroundColor: "var(--color-brand-light)", color: "var(--color-brand)" }}>
                   {a.code}
                 </div>
                 <div className="min-w-0">
-                  <p className="font-semibold truncate" style={{ color: colors.ink }}>{a.city}</p>
-                  <p className="text-xs truncate" style={{ color: colors.muted }}>{a.name} · {a.country}</p>
+                  <p className="font-semibold truncate" style={{ color: "var(--color-ink)" }}>{a.city}</p>
+                  <p className="text-xs truncate" style={{ color: "var(--color-muted)" }}>{a.name} · {a.country}</p>
                 </div>
               </button>
             </li>
@@ -143,12 +142,12 @@ function AirportInput({
   return (
     <div className="flex-1 min-w-0">
       <label htmlFor={id} className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-        style={{ color: colors.muted }}>
+        style={{ color: "var(--color-muted)" }}>
         {label}
       </label>
       <div className="relative">
         <Icon size={16} className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ color: colors.brand }} aria-hidden="true" />
+          style={{ color: "var(--color-brand)" }} aria-hidden="true" />
         <input
           ref={inputRef}
           id={id}
@@ -161,9 +160,9 @@ function AirportInput({
           spellCheck={false}
           className="w-full pl-9 pr-3 py-3 text-sm rounded-xl focus-visible:outline-none transition-colors"
           style={{
-            border: `1px solid ${colors.border}`,
-            backgroundColor: colors.white,
-            color: colors.ink,
+            border: `1px solid var(--color-border)`,
+            backgroundColor: "var(--color-white)",
+            color: "var(--color-ink)",
           }}
         />
       </div>
@@ -183,33 +182,33 @@ function PaxCounter({
   const min = field === "adults" ? 1 : 0;
   return (
     <div className="flex items-center justify-between py-3"
-      style={{ borderBottom: `1px solid ${colors.border}` }}>
+      style={{ borderBottom: `1px solid var(--color-border)` }}>
       <div>
-        <p className="text-sm font-medium" style={{ color: colors.ink }}>{lbl}</p>
-        <p className="text-xs" style={{ color: colors.muted }}>{sub}</p>
+        <p className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>{lbl}</p>
+        <p className="text-xs" style={{ color: "var(--color-muted)" }}>{sub}</p>
       </div>
       <div className="flex items-center gap-3">
         <button type="button"
           onClick={() => setPax({ ...pax, [field]: Math.max(min, val - 1) })}
           disabled={val <= min}
           className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none disabled:opacity-30"
-          style={{ border: `1.5px solid ${colors.border}`, cursor: val > min ? "pointer" : "default" }}
-          onMouseEnter={(e) => { if (val > min) e.currentTarget.style.borderColor = colors.brand; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; }}
+          style={{ border: `1.5px solid var(--color-border)`, cursor: val > min ? "pointer" : "default" }}
+          onMouseEnter={(e) => { if (val > min) e.currentTarget.style.borderColor = "var(--color-brand)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; }}
           aria-label={`Reduzir ${lbl}`}
         >
-          <RiSubtractLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
+          <RiSubtractLine size={14} style={{ color: "var(--color-ink)" }} aria-hidden="true" />
         </button>
-        <span className="w-4 text-center font-semibold text-sm" style={{ color: colors.ink }}>{val}</span>
+        <span className="w-4 text-center font-semibold text-sm" style={{ color: "var(--color-ink)" }}>{val}</span>
         <button type="button"
           onClick={() => setPax({ ...pax, [field]: val + 1 })}
           className="w-8 h-8 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none"
-          style={{ border: `1.5px solid ${colors.border}`, cursor: "pointer" }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = colors.brand; e.currentTarget.style.backgroundColor = colors.brandLight; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = colors.border; e.currentTarget.style.backgroundColor = "transparent"; }}
+          style={{ border: `1.5px solid var(--color-border)`, cursor: "pointer" }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--color-brand)"; e.currentTarget.style.backgroundColor = "var(--color-brand-light)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; e.currentTarget.style.backgroundColor = "transparent"; }}
           aria-label={`Aumentar ${lbl}`}
         >
-          <RiAddLine size={14} style={{ color: colors.ink }} aria-hidden="true" />
+          <RiAddLine size={14} style={{ color: "var(--color-ink)" }} aria-hidden="true" />
         </button>
       </div>
     </div>
@@ -271,8 +270,8 @@ function PaxSelector({
             position: "fixed",
             top: dropPos.top, left: dropPos.left, width: dropPos.width,
             zIndex: 49,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.border}`,
+            backgroundColor: "var(--color-white)",
+            border: `1px solid var(--color-border)`,
             borderRadius: "1rem",
             boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
             padding: "1rem",
@@ -284,16 +283,16 @@ function PaxSelector({
 
           {/* Classe */}
           <div className="mt-3">
-            <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: colors.muted }}>Classe</p>
+            <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--color-muted)" }}>Classe</p>
             <div className="grid grid-cols-2 gap-2">
               {(Object.keys(CABIN_LABELS) as CabinClass[]).map((cls) => (
                 <button key={cls} type="button"
                   onClick={() => setCabinClass(cls)}
                   className="py-2 px-3 rounded-xl text-xs font-medium text-left transition-colors focus-visible:outline-none"
                   style={{
-                    backgroundColor: cabinClass === cls ? colors.brandLight : colors.surface,
-                    color:           cabinClass === cls ? colors.brand : colors.ink3,
-                    border:          `1.5px solid ${cabinClass === cls ? colors.brandMid : "transparent"}`,
+                    backgroundColor: cabinClass === cls ? "var(--color-brand-light)" : "var(--color-surface)",
+                    color:           cabinClass === cls ? "var(--color-brand)" : "var(--color-ink-3)",
+                    border:          `1.5px solid ${cabinClass === cls ? "var(--color-brand-mid)" : "transparent"}`,
                     cursor: "pointer",
                   }}
                 >
@@ -305,7 +304,7 @@ function PaxSelector({
 
           <button type="button" onClick={() => setOpen(false)}
             className="mt-4 w-full py-2.5 rounded-xl text-sm font-semibold transition-opacity hover:opacity-90 focus-visible:outline-none"
-            style={{ backgroundColor: colors.brand, color: colors.white, cursor: "pointer" }}>
+            style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)", cursor: "pointer" }}>
             Confirmar
           </button>
         </motion.div>
@@ -316,14 +315,14 @@ function PaxSelector({
   return (
     <div className="flex-1 min-w-0">
       <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-        style={{ color: colors.muted }}>
+        style={{ color: "var(--color-muted)" }}>
         Passageiros
       </label>
       <button ref={triggerRef} type="button" onClick={handleOpen}
         className="w-full flex items-center gap-2 pl-9 pr-3 py-3 text-sm rounded-xl text-left transition-colors focus-visible:outline-none relative"
-        style={{ border: `1px solid ${colors.border}`, backgroundColor: colors.white, color: colors.ink, cursor: "pointer" }}>
+        style={{ border: `1px solid var(--color-border)`, backgroundColor: "var(--color-white)", color: "var(--color-ink)", cursor: "pointer" }}>
         <RiUserLine size={16} className="absolute left-3 top-1/2 -translate-y-1/2"
-          style={{ color: colors.brand }} aria-hidden="true" />
+          style={{ color: "var(--color-brand)" }} aria-hidden="true" />
         <span className="truncate">{label}</span>
       </button>
       {mounted && createPortal(dropdown, document.body)}
@@ -426,8 +425,8 @@ function DatePicker({ id, label, value, onChange, min }: {
             position: "fixed",
             top: dropPos.top, left: dropPos.left, width: dropPos.width,
             zIndex: 49,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.border}`,
+            backgroundColor: "var(--color-white)",
+            border: `1px solid var(--color-border)`,
             borderRadius: "0.875rem",
             boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
             padding: "1rem",
@@ -439,26 +438,26 @@ function DatePicker({ id, label, value, onChange, min }: {
             <button type="button" onClick={prevMonth} disabled={!canGoPrev}
               className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors focus-visible:outline-none"
               style={{ cursor: canGoPrev ? "pointer" : "default", opacity: canGoPrev ? 1 : 0.25 }}
-              onMouseEnter={(e) => { if (canGoPrev) e.currentTarget.style.backgroundColor = colors.surface; }}
+              onMouseEnter={(e) => { if (canGoPrev) e.currentTarget.style.backgroundColor = "var(--color-surface)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
               aria-label="Mês anterior"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M9 3l-4 4 4 4" stroke={colors.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M9 3l-4 4 4 4" stroke={"var(--color-ink)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <span className="text-sm font-semibold" style={{ color: colors.ink }}>
+            <span className="text-sm font-semibold" style={{ color: "var(--color-ink)" }}>
               {MONTHS_PT[viewMonth]} {viewYear}
             </span>
             <button type="button" onClick={nextMonth}
               className="w-7 h-7 flex items-center justify-center rounded-lg transition-colors focus-visible:outline-none"
               style={{ cursor: "pointer" }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.surface; }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-surface)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
               aria-label="Próximo mês"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M5 3l4 4-4 4" stroke={colors.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M5 3l4 4-4 4" stroke={"var(--color-ink)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -467,7 +466,7 @@ function DatePicker({ id, label, value, onChange, min }: {
           <div className="grid grid-cols-7 mb-1">
             {DAYS_PT.map((d) => (
               <div key={d} className="h-7 flex items-center justify-center text-xs font-semibold"
-                style={{ color: colors.muted }}>{d}</div>
+                style={{ color: "var(--color-muted)" }}>{d}</div>
             ))}
           </div>
 
@@ -487,15 +486,15 @@ function DatePicker({ id, label, value, onChange, min }: {
                 <button key={day} type="button" onClick={() => selectDay(day)} disabled={isPast}
                   className="h-8 flex items-center justify-center rounded-lg text-xs transition-colors focus-visible:outline-none"
                   style={{
-                    backgroundColor: isSel ? colors.brand : "transparent",
-                    color:   isSel  ? colors.white
-                           : isPast ? colors.mutedLight
-                           : isToday ? colors.brand
-                           : colors.ink,
+                    backgroundColor: isSel ? "var(--color-brand)" : "transparent",
+                    color:   isSel  ? "var(--color-white)"
+                           : isPast ? "var(--color-muted-light)"
+                           : isToday ? "var(--color-brand)"
+                           : "var(--color-ink)",
                     fontWeight: isSel || isToday ? 600 : 400,
                     cursor: isPast ? "default" : "pointer",
                   }}
-                  onMouseEnter={(e) => { if (!isPast && !isSel) e.currentTarget.style.backgroundColor = colors.brandLight; }}
+                  onMouseEnter={(e) => { if (!isPast && !isSel) e.currentTarget.style.backgroundColor = "var(--color-brand-light)"; }}
                   onMouseLeave={(e) => { if (!isSel) e.currentTarget.style.backgroundColor = "transparent"; }}
                 >
                   {day}
@@ -511,12 +510,12 @@ function DatePicker({ id, label, value, onChange, min }: {
   return (
     <div className="flex-1 min-w-0">
       <label htmlFor={id} className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-        style={{ color: colors.muted }}>
+        style={{ color: "var(--color-muted)" }}>
         {label}
       </label>
       <div className="relative">
         <RiCalendarLine size={16} className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ color: colors.brand }} aria-hidden="true" />
+          style={{ color: "var(--color-brand)" }} aria-hidden="true" />
         <button
           ref={triggerRef}
           id={id}
@@ -524,9 +523,9 @@ function DatePicker({ id, label, value, onChange, min }: {
           onClick={handleOpen}
           className="w-full flex items-center pl-9 pr-3 py-3 text-sm rounded-xl focus-visible:outline-none transition-colors text-left"
           style={{
-            border: `1px solid ${colors.border}`,
-            backgroundColor: colors.white,
-            color: displayValue ? colors.ink : colors.muted,
+            border: `1px solid var(--color-border)`,
+            backgroundColor: "var(--color-white)",
+            color: displayValue ? "var(--color-ink)" : "var(--color-muted)",
             cursor: "pointer",
           }}
         >
@@ -562,7 +561,7 @@ export function FlightSearch() {
 
   return (
     <section aria-label="Buscar voos" className="relative z-10 py-12"
-      style={{ backgroundColor: colors.brand }}>
+      style={{ backgroundColor: "var(--color-brand)" }}>
 
       {/* Pattern decorativo */}
       <div
@@ -586,7 +585,7 @@ export function FlightSearch() {
         </div>
 
         <div className="rounded-3xl p-5 md:p-6"
-          style={{ backgroundColor: colors.white, border: `1px solid ${colors.border}`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+          style={{ backgroundColor: "var(--color-white)", border: `1px solid var(--color-border)`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
 
           {/* Tabs */}
           <div className="flex items-center gap-1 mb-5">
@@ -598,8 +597,8 @@ export function FlightSearch() {
                 onClick={() => setTripType(key)}
                 className="px-4 py-2 rounded-xl text-sm font-medium transition-colors focus-visible:outline-none"
                 style={{
-                  backgroundColor: tripType === key ? colors.brandLight : "transparent",
-                  color:           tripType === key ? colors.brand : colors.muted,
+                  backgroundColor: tripType === key ? "var(--color-brand-light)" : "transparent",
+                  color:           tripType === key ? "var(--color-brand)" : "var(--color-muted)",
                   cursor: "pointer",
                 }}
               >
@@ -627,12 +626,12 @@ export function FlightSearch() {
                 type="button"
                 onClick={swap}
                 className="hidden lg:flex w-9 h-9 flex-shrink-0 mb-0.5 self-end items-center justify-center rounded-full transition-colors focus-visible:outline-none"
-                style={{ border: `1.5px solid ${colors.border}`, backgroundColor: colors.white, cursor: "pointer" }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.brandLight; e.currentTarget.style.borderColor = colors.brandMid; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = colors.white; e.currentTarget.style.borderColor = colors.border; }}
+                style={{ border: `1.5px solid var(--color-border)`, backgroundColor: "var(--color-white)", cursor: "pointer" }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-brand-light)"; e.currentTarget.style.borderColor = "var(--color-brand-mid)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--color-white)"; e.currentTarget.style.borderColor = "var(--color-border)"; }}
                 aria-label="Trocar origem e destino"
               >
-                <RiArrowLeftRightLine size={15} style={{ color: colors.brand }} aria-hidden="true" />
+                <RiArrowLeftRightLine size={15} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
               </button>
 
               {/* Destino */}
@@ -676,7 +675,7 @@ export function FlightSearch() {
               <button
                 type="submit"
                 className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none flex-shrink-0"
-                style={{ backgroundColor: colors.brand, color: colors.white, cursor: "pointer", minWidth: "7rem" }}
+                style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)", cursor: "pointer", minWidth: "7rem" }}
               >
                 <RiSearchLine size={16} aria-hidden="true" />
                 Buscar

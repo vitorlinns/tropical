@@ -30,9 +30,9 @@ export function Testimonials() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left — heading */}
           <div>
-            <h2 id="testi-title" className="font-display font-bold text-4xl md:text-5xl text-[#111111] leading-tight mb-8">
+            <h2 id="testi-title" className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight mb-8">
               <AnimatedText text="Quem já voou" className="block" />
-              <AnimatedText text="com a gente" className="text-[#FF6B35] block" delay={0.1} />
+              <AnimatedText text="com a gente" className="text-brand block" delay={0.1} />
             </h2>
 
             {/* Mini cards */}
@@ -41,23 +41,23 @@ export function Testimonials() {
                 <button
                   key={item.id}
                   onClick={() => { setDirection(i > active ? 1 : -1); setActive(i); }}
-                  className={`text-left p-4 rounded-2xl border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] ${
+                  className={`text-left p-4 rounded-2xl border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
                     i === active
-                      ? "border-[#FF6B35] bg-[#FFF1EC]"
-                      : "border-[#E8E4DF] bg-white hover:border-[#FFD5C0]"
+                      ? "border-brand bg-brand-light"
+                      : "border-border bg-white hover:border-brand-mid"
                   }`}
                   aria-label={`Ver depoimento de ${item.name}`}
                   style={{ touchAction: "manipulation" }}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                      i === active ? "bg-[#FF6B35] text-white" : "bg-[#F0EDE9] text-[#888888]"
+                      i === active ? "bg-brand text-white" : "bg-surface-2 text-muted"
                     }`} aria-hidden="true">
                       {item.avatar}
                     </div>
-                    <span className="text-xs font-semibold text-[#111111] truncate">{item.name}</span>
+                    <span className="text-xs font-semibold text-ink truncate">{item.name}</span>
                   </div>
-                  <p className="text-xs text-[#888888]">Voou para {item.destination}</p>
+                  <p className="text-xs text-muted">Voou para {item.destination}</p>
                 </button>
               ))}
             </div>
@@ -71,11 +71,11 @@ export function Testimonials() {
             viewport={{ once: true }}
             custom={0.1}
           >
-            <div className="card bg-[#F9F7F4] border-[#F0EDE9] p-8 md:p-10">
+            <div className="card bg-surface border-surface-2 p-8 md:p-10">
               {/* Stars */}
               <div className="flex gap-1 mb-6" aria-label={`${t.rating} de 5 estrelas`}>
                 {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star key={i} size={16} className="fill-[#FF6B35] text-[#FF6B35]" aria-hidden="true" />
+                  <Star key={i} size={16} className="fill-brand text-brand" aria-hidden="true" />
                 ))}
               </div>
 
@@ -89,7 +89,7 @@ export function Testimonials() {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    className="text-lg md:text-xl text-[#111111] leading-relaxed font-medium"
+                    className="text-lg md:text-xl text-ink leading-relaxed font-medium"
                   >
                     &ldquo;{t.text}&rdquo;
                   </motion.blockquote>
@@ -99,12 +99,12 @@ export function Testimonials() {
               {/* Author */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#FF6B35] flex items-center justify-center font-bold text-sm text-white" aria-hidden="true">
+                  <div className="w-10 h-10 rounded-full bg-brand flex items-center justify-center font-bold text-sm text-white" aria-hidden="true">
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="font-semibold text-[#111111] text-sm">{t.name}</p>
-                    <p className="text-[#888888] text-xs">{t.city} &middot; {t.destination}</p>
+                    <p className="font-semibold text-ink text-sm">{t.name}</p>
+                    <p className="text-muted text-xs">{t.city} &middot; {t.destination}</p>
                   </div>
                 </div>
 
@@ -112,7 +112,7 @@ export function Testimonials() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => go(-1)}
-                    className="w-9 h-9 rounded-xl border border-[#E8E4DF] bg-white flex items-center justify-center hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+                    className="w-9 h-9 rounded-xl border border-border bg-white flex items-center justify-center hover:border-brand hover:text-brand transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                     aria-label="Depoimento anterior"
                     style={{ touchAction: "manipulation" }}
                   >
@@ -120,7 +120,7 @@ export function Testimonials() {
                   </button>
                   <button
                     onClick={() => go(1)}
-                    className="w-9 h-9 rounded-xl border border-[#E8E4DF] bg-white flex items-center justify-center hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+                    className="w-9 h-9 rounded-xl border border-border bg-white flex items-center justify-center hover:border-brand hover:text-brand transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                     aria-label="Próximo depoimento"
                     style={{ touchAction: "manipulation" }}
                   >

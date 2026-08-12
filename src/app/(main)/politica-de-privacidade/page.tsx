@@ -470,7 +470,7 @@ const sections: LegalSection[] = [
           Consulte também nossos{" "}
           <Link
             href="/termos-de-uso"
-            className="font-semibold text-[#FF6B35] underline-offset-2 hover:underline"
+            className="font-semibold text-brand underline-offset-2 hover:underline"
           >
             Termos de Uso
           </Link>{" "}
@@ -488,7 +488,7 @@ export default function PoliticaDePrivacidadePage() {
       title={
         <>
           Política de{" "}
-          <span className="text-[#FF6B35]">Privacidade</span>
+          <span className="text-brand">Privacidade</span>
         </>
       }
       description="Transparência total sobre como tratamos seus dados pessoais. Aqui você entende o que coletamos, por que coletamos e quais são os seus direitos garantidos pela LGPD."

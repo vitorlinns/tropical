@@ -14,7 +14,6 @@ import {
 } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
-import { colors } from "@/lib/colors";
 import { useCart } from "@/lib/cart-context";
 import { CartDialog } from "@/components/shared/CartDialog";
 
@@ -34,14 +33,14 @@ function CartButton() {
     <>
       <button
         onClick={() => setCartOpen(true)}
-        className="relative flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
-        style={{ touchAction: "manipulation", color: colors.ink2 }}
+        className="relative flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        style={{ touchAction: "manipulation", color: "var(--color-ink-2)" }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = colors.ink;
-          e.currentTarget.style.backgroundColor = colors.surface;
+          e.currentTarget.style.color = "var(--color-ink)";
+          e.currentTarget.style.backgroundColor = "var(--color-surface)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = colors.ink2;
+          e.currentTarget.style.color = "var(--color-ink-2)";
           e.currentTarget.style.backgroundColor = "transparent";
         }}
         aria-label={count > 0 ? `Minhas compras, ${count} viagem${count > 1 ? "ns" : ""}` : "Minhas compras"}
@@ -51,7 +50,7 @@ function CartButton() {
           {count > 0 && (
             <span
               className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full text-[10px] font-bold flex items-center justify-center leading-none"
-              style={{ backgroundColor: colors.brand, color: colors.white }}
+              style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)" }}
               aria-hidden="true"
             >
               {count}
@@ -72,7 +71,7 @@ export function Header() {
   return (
     <header
       className="fixed top-0 inset-x-0 z-50 py-3"
-      style={{ backgroundColor: "rgba(255,255,255,0.97)", borderBottom: `1px solid ${colors.border}`, backdropFilter: "blur(12px)" }}
+      style={{ backgroundColor: "rgba(255,255,255,0.97)", borderBottom: `1px solid var(--color-border)`, backdropFilter: "blur(12px)" }}
     >
       <nav
         className="max-w-7xl mx-auto px-6 flex items-center gap-4"
@@ -102,13 +101,13 @@ export function Header() {
               <a
                 href={href}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1"
-                style={{ color: colors.ink3 }}
+                style={{ color: "var(--color-ink-3)" }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = colors.ink;
-                  e.currentTarget.style.backgroundColor = colors.surface;
+                  e.currentTarget.style.color = "var(--color-ink)";
+                  e.currentTarget.style.backgroundColor = "var(--color-surface)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = colors.ink3;
+                  e.currentTarget.style.color = "var(--color-ink-3)";
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
               >
@@ -125,7 +124,7 @@ export function Header() {
           <a
             href="/login"
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-opacity hover:opacity-90 cursor-pointer ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-            style={{ backgroundColor: colors.brand, color: colors.white }}
+            style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)" }}
           >
             <RiUserLine size={15} aria-hidden="true" />
             Entrar / Criar conta
@@ -137,7 +136,7 @@ export function Header() {
           <CartButton />
           <button
             className="p-2 rounded-xl border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2"
-            style={{ borderColor: colors.border, color: colors.ink }}
+            style={{ borderColor: "var(--color-border)", color: "var(--color-ink)" }}
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
@@ -160,8 +159,8 @@ export function Header() {
             exit={{ opacity: 0, y: -6, transition: { duration: 0.15, ease: "easeIn" } }}
             className="lg:hidden fixed inset-x-0 top-[73px] z-40 mx-3 rounded-2xl overflow-hidden"
             style={{
-              backgroundColor: colors.white,
-              border: `1px solid ${colors.border}`,
+              backgroundColor: "var(--color-white)",
+              border: `1px solid var(--color-border)`,
               boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
             }}
           >
@@ -172,11 +171,11 @@ export function Header() {
                   href={href}
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 px-3 py-3.5 rounded-xl transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2"
-                  style={{ color: colors.ink2 }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.surface; e.currentTarget.style.color = colors.ink; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = colors.ink2; }}
+                  style={{ color: "var(--color-ink-2)" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-surface)"; e.currentTarget.style.color = "var(--color-ink)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--color-ink-2)"; }}
                 >
-                  <Icon size={18} style={{ color: colors.brand }} aria-hidden="true" />
+                  <Icon size={18} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                   <span className="text-sm font-medium">{label}</span>
                 </a>
               ))}
@@ -186,7 +185,7 @@ export function Header() {
                   href="/login"
                   onClick={() => setOpen(false)}
                   className="flex items-center gap-3 px-3 py-3.5 rounded-xl transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2"
-                  style={{ backgroundColor: colors.brand, color: colors.white }}
+                  style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)" }}
                 >
                   <RiUserLine size={18} aria-hidden="true" />
                   <span className="text-sm font-semibold">Entrar / Criar conta</span>

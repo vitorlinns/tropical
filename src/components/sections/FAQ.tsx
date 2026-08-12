@@ -6,7 +6,6 @@ import { RiAddLine, RiSubtractLine, RiArrowRightLine } from "@remixicon/react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { faqs } from "@/lib/data/destinations";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 
 export function FAQ() {
   const [open, setOpen]  = useState<number | null>(0);
@@ -14,24 +13,24 @@ export function FAQ() {
 
   return (
     <section className="py-28" aria-labelledby="faq-title"
-      style={{ backgroundColor: colors.surface }}>
+      style={{ backgroundColor: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
 
           {/* Left */}
           <div className="lg:sticky lg:top-32">
             <h2 id="faq-title" className="font-display font-bold text-4xl md:text-5xl leading-tight mb-6"
-              style={{ color: colors.ink }}>
+              style={{ color: "var(--color-ink)" }}>
               <AnimatedText text="Perguntas" className="block" />
-              <AnimatedText text="frequentes" className="block text-[#FF6B35]" delay={0.1} />
+              <AnimatedText text="frequentes" className="block text-brand" delay={0.1} />
             </h2>
-            <p className="text-sm leading-relaxed mb-8" style={{ color: colors.muted }}>
+            <p className="text-sm leading-relaxed mb-8" style={{ color: "var(--color-muted)" }}>
               Não encontrou sua dúvida? Nossa equipe responde em até 30 minutos.
             </p>
             <a
               href="#contato"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{ backgroundColor: colors.brand, color: colors.white }}
+              style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)" }}
             >
               Falar com a equipe
               <RiArrowRightLine size={15} aria-hidden="true" />
@@ -53,23 +52,23 @@ export function FAQ() {
                   <button
                     onClick={() => setOpen(open === i ? null : i)}
                     className="w-full flex items-center justify-between gap-4 p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset rounded-[1.25rem]"
-                    style={{ ["--tw-ring-color" as string]: colors.brand }}
+                    style={{ ["--tw-ring-color" as string]: "var(--color-brand)" }}
                     aria-expanded={open === i}
                     aria-controls={`faq-answer-${i}`}
                   >
                     <span className="font-semibold text-sm md:text-base leading-snug"
-                      style={{ color: colors.ink }}>
+                      style={{ color: "var(--color-ink)" }}>
                       {faq.q}
                     </span>
                     <span
                       className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-colors duration-150"
                       style={{
-                        backgroundColor: open === i ? colors.brandLight : colors.surface,
+                        backgroundColor: open === i ? "var(--color-brand-light)" : "var(--color-surface)",
                       }}
                     >
                       {open === i
-                        ? <RiSubtractLine size={14} style={{ color: colors.brand }} aria-hidden="true" />
-                        : <RiAddLine      size={14} style={{ color: colors.muted }} aria-hidden="true" />
+                        ? <RiSubtractLine size={14} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
+                        : <RiAddLine      size={14} style={{ color: "var(--color-muted)" }} aria-hidden="true" />
                       }
                     </span>
                   </button>
@@ -84,7 +83,7 @@ export function FAQ() {
                       className="overflow-hidden"
                     >
                       <p className="px-5 pb-5 text-sm leading-relaxed pt-4"
-                        style={{ color: colors.ink3, borderTop: `1px solid ${colors.surface2}` }}>
+                        style={{ color: "var(--color-ink-3)", borderTop: `1px solid var(--color-surface-2)` }}>
                         {faq.a}
                       </p>
                     </motion.dd>

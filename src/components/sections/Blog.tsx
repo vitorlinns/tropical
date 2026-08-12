@@ -5,12 +5,11 @@ import Image from "next/image";
 import { RiTimeLine, RiArrowRightLine, RiMapPinLine } from "@remixicon/react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 
 const posts = [
   {
     tag: "Guia de milhas",
-    tagColor: colors.brand,
+    tagColor: "var(--color-brand)",
     title: "Como usar milhas do cartão de crédito para voar pela metade do preço",
     excerpt:
       "Você sabia que as milhas acumuladas no seu cartão podem cobrir até 100% da passagem? Descubra como transferir pontos, escolher a melhor data e garantir a emissão sem estresse.",
@@ -56,19 +55,19 @@ export function Blog() {
             <h2
               id="blog-title"
               className="font-display font-bold text-4xl md:text-5xl leading-tight"
-              style={{ color: colors.ink }}
+              style={{ color: "var(--color-ink)" }}
             >
               <AnimatedText text="Aprenda a viajar " className="block" />
-              <AnimatedText text="mais por menos." className="block text-[#FF6B35]" delay={0.1} />
+              <AnimatedText text="mais por menos." className="block text-brand" delay={0.1} />
             </h2>
-            <p className="mt-4 text-base max-w-md" style={{ color: colors.muted }}>
+            <p className="mt-4 text-base max-w-md" style={{ color: "var(--color-muted)" }}>
               Dicas, guias e estratégias para usar suas milhas da melhor forma possível.
             </p>
           </div>
           <a
             href="#"
             className="inline-flex items-center gap-2 text-sm font-semibold shrink-0 transition-opacity hover:opacity-70 focus-visible:outline-none"
-            style={{ color: colors.brand }}
+            style={{ color: "var(--color-brand)" }}
           >
             Ver todos os artigos
             <RiArrowRightLine size={15} aria-hidden="true" />
@@ -86,7 +85,7 @@ export function Blog() {
               viewport={{ once: true, margin: "-40px" }}
               custom={i * 0.1}
               className="group flex flex-col rounded-2xl overflow-hidden cursor-pointer"
-              style={{ border: `1px solid ${colors.border}`, backgroundColor: colors.white }}
+              style={{ border: `1px solid var(--color-border)`, backgroundColor: "var(--color-white)" }}
               tabIndex={0}
               aria-label={`Ler: ${post.title}`}
             >
@@ -113,13 +112,13 @@ export function Blog() {
               {/* Conteúdo */}
               <div className="flex flex-col flex-1 p-6">
                 <h3
-                  className="font-display font-bold text-lg leading-snug mb-3 transition-colors group-hover:text-[#FF6B35]"
-                  style={{ color: colors.ink }}
+                  className="font-display font-bold text-lg leading-snug mb-3 transition-colors group-hover:text-brand"
+                  style={{ color: "var(--color-ink)" }}
                 >
                   {post.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: colors.muted }}>
+                <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "var(--color-muted)" }}>
                   {post.excerpt}
                 </p>
 
@@ -129,7 +128,7 @@ export function Blog() {
                     <span
                       key={t}
                       className="px-2.5 py-1 rounded-lg text-xs font-medium"
-                      style={{ backgroundColor: colors.surface, color: colors.ink3 }}
+                      style={{ backgroundColor: "var(--color-surface)", color: "var(--color-ink-3)" }}
                     >
                       {t}
                     </span>
@@ -139,9 +138,9 @@ export function Blog() {
                 {/* Rodapé */}
                 <div
                   className="flex items-center justify-between pt-4 -mx-6 px-6"
-                  style={{ borderTop: `1px solid ${colors.border}` }}
+                  style={{ borderTop: `1px solid var(--color-border)` }}
                 >
-                  <div className="flex items-center gap-3 text-xs" style={{ color: colors.mutedLight }}>
+                  <div className="flex items-center gap-3 text-xs" style={{ color: "var(--color-muted-light)" }}>
                     <span className="flex items-center gap-1">
                       <RiTimeLine size={13} aria-hidden="true" />
                       {post.readTime}
@@ -153,7 +152,7 @@ export function Blog() {
                   </div>
                   <span
                     className="flex items-center gap-1 text-xs font-semibold transition-gap"
-                    style={{ color: colors.brand }}
+                    style={{ color: "var(--color-brand)" }}
                   >
                     Ler
                     <RiArrowRightLine

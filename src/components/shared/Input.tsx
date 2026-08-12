@@ -1,7 +1,6 @@
 "use client";
 
 import { type RemixiconComponentType } from "@remixicon/react";
-import { colors } from "@/lib/colors";
 
 interface InputProps {
   label?: string;
@@ -28,14 +27,14 @@ export function Input({
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium mb-1.5" style={{ color: colors.ink }}>
+        <label htmlFor={id} className="block text-sm font-medium mb-1.5" style={{ color: "var(--color-ink)" }}>
           {label}
         </label>
       )}
       <div className="relative">
         {Icon && (
           <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
-            style={{ color: colors.mutedLight }}>
+            style={{ color: "var(--color-muted-light)" }}>
             <Icon size={16} aria-hidden="true" />
           </div>
         )}
@@ -54,9 +53,9 @@ export function Input({
           style={{
             paddingLeft:  Icon   ? "2.625rem" : "1rem",
             paddingRight: suffix ? "2.625rem" : "1rem",
-            border: `1px solid ${error ? colors.danger : colors.border}`,
-            backgroundColor: disabled ? colors.surface : colors.white,
-            color: colors.ink,
+            border: `1px solid ${error ? "var(--color-danger)" : "var(--color-border)"}`,
+            backgroundColor: disabled ? "var(--color-surface)" : "var(--color-white)",
+            color: "var(--color-ink)",
           }}
           aria-describedby={error ? `${id}-error` : undefined}
           aria-invalid={!!error}
@@ -66,7 +65,7 @@ export function Input({
         )}
       </div>
       {error && (
-        <p id={`${id}-error`} className="text-xs mt-1" style={{ color: colors.danger }}>{error}</p>
+        <p id={`${id}-error`} className="text-xs mt-1" style={{ color: "var(--color-danger)" }}>{error}</p>
       )}
     </div>
   );

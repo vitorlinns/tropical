@@ -8,7 +8,6 @@ import { Select } from "@/components/shared/Select";
 import { Input } from "@/components/shared/Input";
 import { destinations } from "@/lib/data/destinations";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 import { fmtNumber } from "@/lib/utils";
 
 const programOptions = [
@@ -39,17 +38,17 @@ export function Calculator() {
   };
 
   return (
-    <section id="calculadora" className="py-28 bg-[#F9F7F4]" aria-labelledby="calc-title">
+    <section id="calculadora" className="py-28 bg-surface" aria-labelledby="calc-title">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Left — copy */}
           <div className="lg:sticky lg:top-32">
-            <h2 id="calc-title" className="font-display font-bold text-4xl md:text-5xl text-[#111111] leading-tight mb-6">
+            <h2 id="calc-title" className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight mb-6">
               <AnimatedText text="Descubra para onde" className="block" />
-              <AnimatedText text="você pode voar" className="text-[#FF6B35] block" delay={0.1} />
+              <AnimatedText text="você pode voar" className="text-brand block" delay={0.1} />
             </h2>
-            <p className="text-base leading-relaxed mb-8" style={{ color: colors.ink4 }}>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "var(--color-ink-4)" }}>
               Informe quantas milhas você tem e veja instantaneamente todos os
               destinos disponíveis com seu saldo atual.
             </p>
@@ -59,10 +58,10 @@ export function Calculator() {
                 "Resposta em até 30 minutos",
                 "Sem taxa para consultar",
               ].map((item) => (
-                <div key={item} className="flex items-center gap-2.5 text-sm" style={{ color: colors.ink2 }}>
+                <div key={item} className="flex items-center gap-2.5 text-sm" style={{ color: "var(--color-ink-2)" }}>
                   <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: colors.brandLight, border: `1px solid ${colors.brandMid}` }}>
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: colors.brand }} />
+                    style={{ backgroundColor: "var(--color-brand-light)", border: `1px solid var(--color-brand-mid)` }}>
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--color-brand)" }} />
                   </div>
                   {item}
                 </div>
@@ -107,13 +106,13 @@ export function Calculator() {
                   aria-live="polite"
                   aria-label="Destinos disponíveis"
                 >
-                  <div className="rounded-xl p-4" style={{ backgroundColor: colors.surface }}>
+                  <div className="rounded-xl p-4" style={{ backgroundColor: "var(--color-surface)" }}>
                     {available.length > 0 ? (
-                      <p className="text-xs font-semibold mb-3" style={{ color: colors.muted }}>
+                      <p className="text-xs font-semibold mb-3" style={{ color: "var(--color-muted)" }}>
                         {available.length} destino{available.length > 1 ? "s" : ""} com {fmtNumber(milesNum)} milhas
                       </p>
                     ) : (
-                      <p className="text-sm font-medium" style={{ color: colors.muted }}>
+                      <p className="text-sm font-medium" style={{ color: "var(--color-muted)" }}>
                         Nenhum destino com esse saldo, tente mais milhas.
                       </p>
                     )}
@@ -122,14 +121,14 @@ export function Calculator() {
                         {available.slice(0, 6).map((d) => (
                           <li key={d.id}>
                             <div className="flex items-center gap-2.5 rounded-lg p-2.5"
-                              style={{ backgroundColor: colors.white, border: `1px solid ${colors.border}` }}>
+                              style={{ backgroundColor: "var(--color-white)", border: `1px solid var(--color-border)` }}>
                               <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                                style={{ backgroundColor: colors.brandLight }}>
-                                <Plane size={13} style={{ color: colors.brand }} aria-hidden="true" />
+                                style={{ backgroundColor: "var(--color-brand-light)" }}>
+                                <Plane size={13} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                               </div>
                               <div className="min-w-0">
-                                <p className="font-semibold text-xs truncate" style={{ color: colors.ink }}>{d.city}</p>
-                                <p className="text-xs truncate" style={{ color: colors.muted }}>
+                                <p className="font-semibold text-xs truncate" style={{ color: "var(--color-ink)" }}>{d.city}</p>
+                                <p className="text-xs truncate" style={{ color: "var(--color-muted)" }}>
                                   {fmtNumber(d.miles)} mi
                                 </p>
                               </div>

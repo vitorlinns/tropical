@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiCheckLine } from "@remixicon/react";
-import { colors } from "@/lib/colors";
 import { useMounted } from "@/lib/hooks/useMounted";
 
 export interface SelectOption {
@@ -92,8 +91,8 @@ export function Select({
             left:     pos.left,
             width:    pos.width,
             zIndex:   49,
-            backgroundColor: colors.white,
-            border: `1px solid ${colors.border}`,
+            backgroundColor: "var(--color-white)",
+            border: `1px solid var(--color-border)`,
             borderRadius: "0.75rem",
             boxShadow: "0 4px 16px rgba(0,0,0,0.07)",
             overflowY: "auto",
@@ -111,16 +110,16 @@ export function Select({
                   onClick={() => { onChange(opt.value); setOpen(false); }}
                   className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-left transition-colors focus-visible:outline-none"
                   style={{
-                    color: isActive ? colors.brand : colors.ink,
+                    color: isActive ? "var(--color-brand)" : "var(--color-ink)",
                     backgroundColor: "transparent",
                     cursor: "pointer",
                     fontWeight: isActive ? 600 : 400,
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.surface; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-surface)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
                 >
                   {opt.label}
-                  {isActive && <RiCheckLine size={14} aria-hidden="true" style={{ color: colors.brand }} />}
+                  {isActive && <RiCheckLine size={14} aria-hidden="true" style={{ color: "var(--color-brand)" }} />}
                 </button>
               </li>
             );
@@ -133,7 +132,7 @@ export function Select({
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium mb-1.5" style={{ color: colors.ink }}>
+        <label htmlFor={id} className="block text-sm font-medium mb-1.5" style={{ color: "var(--color-ink)" }}>
           {label}
         </label>
       )}
@@ -152,9 +151,9 @@ export function Select({
         onClick={handleOpen}
         className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm text-left transition-colors focus-visible:outline-none disabled:opacity-50"
         style={{
-          border: `1px solid ${error ? colors.danger : colors.border}`,
-          backgroundColor: disabled ? colors.surface : colors.white,
-          color: selected ? colors.ink : colors.mutedLight,
+          border: `1px solid ${error ? "var(--color-danger)" : "var(--color-border)"}`,
+          backgroundColor: disabled ? "var(--color-surface)" : "var(--color-white)",
+          color: selected ? "var(--color-ink)" : "var(--color-muted-light)",
           cursor: disabled ? "default" : "pointer",
         }}
       >
@@ -166,7 +165,7 @@ export function Select({
           width="14" height="14" viewBox="0 0 14 14" fill="none"
           aria-hidden="true"
           className="flex-shrink-0 ml-2"
-          style={{ color: colors.mutedLight }}
+          style={{ color: "var(--color-muted-light)" }}
         >
           <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5"
             strokeLinecap="round" strokeLinejoin="round" />
@@ -174,7 +173,7 @@ export function Select({
       </button>
 
       {error && (
-        <p id={`${id}-error`} className="text-xs mt-1" style={{ color: colors.danger }}>{error}</p>
+        <p id={`${id}-error`} className="text-xs mt-1" style={{ color: "var(--color-danger)" }}>{error}</p>
       )}
 
       {mounted && createPortal(dropdown, document.body)}

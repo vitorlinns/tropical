@@ -105,7 +105,7 @@ function FlightCard({ flight }: { flight: Flight }) {
           className={`flex items-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-transparent ${
             inCart
               ? "bg-white/20 text-white/70 cursor-default"
-              : "bg-[#FF6B35] hover:bg-[#E85D2B] text-white"
+              : "bg-brand hover:bg-brand-hover text-white"
           }`}
           aria-label={inCart ? "Já adicionado às suas compras" : `Adicionar ${flight.destination} às suas compras`}
           style={{ touchAction: "manipulation" }}
@@ -191,7 +191,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden bg-[#111111]"
+      className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden bg-ink"
       aria-label="Destinos em destaque"
       aria-roledescription="carrossel"
     >

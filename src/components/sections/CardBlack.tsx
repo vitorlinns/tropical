@@ -10,7 +10,6 @@ import {
 } from "@remixicon/react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 
 const perks = [
   {
@@ -74,18 +73,18 @@ export function CardBlack() {
             <h2
               id="card-black-title"
               className="font-display font-bold text-4xl md:text-5xl xl:text-6xl leading-[1.08] mb-6"
-              style={{ color: colors.white }}
+              style={{ color: "var(--color-white)" }}
             >
               <AnimatedText text="Cada compra," className="block" />
               <AnimatedText text="uma nova" className="block" delay={0.08} />
-              <span style={{ color: colors.brand }}>
+              <span style={{ color: "var(--color-brand)" }}>
                 <AnimatedText text="viagem." className="block" delay={0.14} />
               </span>
             </h2>
 
             <p
               className="text-base leading-relaxed mb-10 max-w-md"
-              style={{ color: colors.white }}
+              style={{ color: "var(--color-white)" }}
             >
               O Cartão Tropical Black chegou para transformar cada gasto em milhas.
               Complete o que falta para sua passagem e acumule pontos em tudo que comprar.
@@ -97,15 +96,15 @@ export function CardBlack() {
                 <div key={title} className="flex items-start gap-4">
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-                    style={{ backgroundColor: colors.white10, border: `1px solid ${colors.white15}` }}
+                    style={{ backgroundColor: "var(--color-white-10)", border: `1px solid var(--color-white-15)` }}
                   >
-                    <Icon size={18} style={{ color: colors.brand }} aria-hidden="true" />
+                    <Icon size={18} style={{ color: "var(--color-brand)" }} aria-hidden="true" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold mb-0.5" style={{ color: colors.white }}>
+                    <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--color-white)" }}>
                       {title}
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: colors.white80 }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--color-white-80)" }}>
                       {text}
                     </p>
                   </div>
@@ -118,7 +117,7 @@ export function CardBlack() {
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2"
-                style={{ backgroundColor: colors.brand, color: colors.white }}
+                style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)" }}
               >
                 Solicitar cartão
                 <RiArrowRightLine size={16} aria-hidden="true" />
@@ -127,12 +126,12 @@ export function CardBlack() {
                 href="#calculadora"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2"
                 style={{
-                  backgroundColor: colors.white10,
-                  border: `1px solid ${colors.white15}`,
-                  color: colors.white,
+                  backgroundColor: "var(--color-white-10)",
+                  border: `1px solid var(--color-white-15)`,
+                  color: "var(--color-white)",
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.white20; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = colors.white10; }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-white-20)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--color-white-10)"; }}
               >
                 Simular milhas
               </a>

@@ -1,11 +1,10 @@
 import { ReactNode } from "react";
 import { Info, Mail, Phone, MapPin } from "lucide-react";
-import { colors } from "@/lib/colors";
 
 /** Parágrafo padrão de texto legal. */
 export function P({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-4 leading-relaxed" style={{ color: colors.ink3 }}>
+    <p className="mb-4 leading-relaxed" style={{ color: "var(--color-ink-3)" }}>
       {children}
     </p>
   );
@@ -16,7 +15,7 @@ export function Sub({ children }: { children: ReactNode }) {
   return (
     <h3
       className="font-display mt-8 mb-3 text-base font-semibold first:mt-0 md:text-lg"
-      style={{ color: colors.ink }}
+      style={{ color: "var(--color-ink)" }}
     >
       {children}
     </h3>
@@ -26,7 +25,7 @@ export function Sub({ children }: { children: ReactNode }) {
 /** Destaque inline. */
 export function Strong({ children }: { children: ReactNode }) {
   return (
-    <strong className="font-semibold" style={{ color: colors.ink }}>
+    <strong className="font-semibold" style={{ color: "var(--color-ink)" }}>
       {children}
     </strong>
   );
@@ -40,11 +39,11 @@ export function Bullets({ items }: { items: ReactNode[] }) {
         <li
           key={i}
           className="flex items-start gap-3 leading-relaxed"
-          style={{ color: colors.ink3 }}
+          style={{ color: "var(--color-ink-3)" }}
         >
           <span
             className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-            style={{ backgroundColor: colors.brand }}
+            style={{ backgroundColor: "var(--color-brand)" }}
           />
           <span>{item}</span>
         </li>
@@ -64,16 +63,16 @@ export function Notice({
   return (
     <div
       className="my-6 flex gap-3 rounded-2xl p-5"
-      style={{ backgroundColor: colors.brandLight, border: `1px solid ${colors.brandMid}` }}
+      style={{ backgroundColor: "var(--color-brand-light)", border: `1px solid var(--color-brand-mid)` }}
     >
-      <Info className="mt-0.5 h-5 w-5 shrink-0" style={{ color: colors.brand }} />
+      <Info className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--color-brand)" }} />
       <div>
         {title && (
-          <p className="mb-1 font-semibold" style={{ color: colors.ink }}>
+          <p className="mb-1 font-semibold" style={{ color: "var(--color-ink)" }}>
             {title}
           </p>
         )}
-        <div className="text-sm leading-relaxed" style={{ color: colors.ink3 }}>
+        <div className="text-sm leading-relaxed" style={{ color: "var(--color-ink-3)" }}>
           {children}
         </div>
       </div>
@@ -110,30 +109,30 @@ export function ContactCard({
         <div
           key={item.label}
           className="flex items-start gap-3 rounded-2xl p-4"
-          style={{ backgroundColor: colors.surface, border: `1px solid ${colors.border}` }}
+          style={{ backgroundColor: "var(--color-surface)", border: `1px solid var(--color-border)` }}
         >
           <span
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm"
-            style={{ color: colors.brand }}
+            style={{ color: "var(--color-brand)" }}
           >
             {item.icon}
           </span>
           <div className="min-w-0">
             <p
               className="text-xs font-semibold uppercase tracking-wide"
-              style={{ color: colors.muted }}
+              style={{ color: "var(--color-muted)" }}
             >
               {item.label}
             </p>
             {item.href ? (
               <a
                 href={item.href}
-                className="break-words font-medium text-[#111111] transition-colors hover:text-[#FF6B35]"
+                className="break-words font-medium text-ink transition-colors hover:text-brand"
               >
                 {item.value}
               </a>
             ) : (
-              <p className="break-words font-medium" style={{ color: colors.ink }}>
+              <p className="break-words font-medium" style={{ color: "var(--color-ink)" }}>
                 {item.value}
               </p>
             )}

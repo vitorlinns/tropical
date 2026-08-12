@@ -13,7 +13,6 @@ import {
   RiEyeOffLine,
   RiArrowLeftLine,
 } from "@remixicon/react";
-import { colors } from "@/lib/colors";
 import { Input } from "@/components/shared/Input";
 import { Spinner } from "@/components/shared/Spinner";
 
@@ -34,7 +33,7 @@ function PasswordField({ label, id, value, onChange, error }: {
           type="button"
           onClick={() => setShow((v) => !v)}
           className="focus-visible:outline-none"
-          style={{ color: colors.muted, cursor: "pointer" }}
+          style={{ color: "var(--color-muted)", cursor: "pointer" }}
           aria-label={show ? "Ocultar senha" : "Mostrar senha"}
         >
           {show
@@ -81,7 +80,7 @@ function LoginForm() {
         <button
           type="button"
           className="text-xs hover:underline focus-visible:outline-none"
-          style={{ color: colors.brand, cursor: "pointer" }}
+          style={{ color: "var(--color-brand)", cursor: "pointer" }}
         >
           Esqueci minha senha
         </button>
@@ -90,7 +89,7 @@ function LoginForm() {
         type="submit"
         disabled={loading}
         className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 disabled:opacity-60"
-        style={{ backgroundColor: colors.brand, color: colors.white, cursor: loading ? "default" : "pointer" }}
+        style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)", cursor: loading ? "default" : "pointer" }}
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -144,7 +143,7 @@ function RegisterForm() {
         type="submit"
         disabled={loading}
         className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 disabled:opacity-60"
-        style={{ backgroundColor: colors.brand, color: colors.white, cursor: loading ? "default" : "pointer" }}
+        style={{ backgroundColor: "var(--color-brand)", color: "var(--color-white)", cursor: loading ? "default" : "pointer" }}
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -163,7 +162,7 @@ export default function LoginPage() {
   const [tab, setTab] = useState<Tab>("login");
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: colors.white }}>
+    <div className="min-h-screen flex" style={{ backgroundColor: "var(--color-white)" }}>
 
       {/* ── Esquerda — form ── */}
       <div className="flex-1 flex flex-col justify-center px-8 py-12 md:px-16 lg:px-20 xl:px-24">
@@ -174,7 +173,7 @@ export default function LoginPage() {
             <button
               onClick={() => router.push("/")}
               className="flex items-center gap-1.5 text-sm focus-visible:outline-none hover:opacity-70 transition-opacity"
-              style={{ color: colors.ink3, cursor: "pointer" }}
+              style={{ color: "var(--color-ink-3)", cursor: "pointer" }}
             >
               <RiArrowLeftLine size={16} aria-hidden="true" />
               Voltar
@@ -188,10 +187,10 @@ export default function LoginPage() {
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}>
 
-            <h1 className="font-display font-bold text-2xl mb-1" style={{ color: colors.ink }}>
+            <h1 className="font-display font-bold text-2xl mb-1" style={{ color: "var(--color-ink)" }}>
               {tab === "login" ? "Bem-vindo de volta" : "Crie sua conta"}
             </h1>
-            <p className="text-sm mb-7" style={{ color: colors.muted }}>
+            <p className="text-sm mb-7" style={{ color: "var(--color-muted)" }}>
               {tab === "login"
                 ? "Entre na sua conta."
                 : "Cadastre-se grátis."}
@@ -202,13 +201,13 @@ export default function LoginPage() {
               type="button"
               className="w-full flex items-center justify-center gap-2.5 py-3 rounded-xl text-sm font-medium transition-colors mb-5 focus-visible:outline-none focus-visible:ring-2"
               style={{
-                border: `1px solid ${colors.border}`,
-                backgroundColor: colors.white,
-                color: colors.ink,
+                border: `1px solid var(--color-border)`,
+                backgroundColor: "var(--color-white)",
+                color: "var(--color-ink)",
                 cursor: "pointer",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = colors.surface; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = colors.white; }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--color-surface)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--color-white)"; }}
             >
               <Image src="/images/icons/google.svg" alt="" width={16} height={16} aria-hidden="true" />
               Continuar com Google
@@ -216,21 +215,21 @@ export default function LoginPage() {
 
             {/* Divisor */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex-1 h-px" style={{ backgroundColor: colors.border }} />
-              <span className="text-xs" style={{ color: colors.mutedLight }}>ou</span>
-              <div className="flex-1 h-px" style={{ backgroundColor: colors.border }} />
+              <div className="flex-1 h-px" style={{ backgroundColor: "var(--color-border)" }} />
+              <span className="text-xs" style={{ color: "var(--color-muted-light)" }}>ou</span>
+              <div className="flex-1 h-px" style={{ backgroundColor: "var(--color-border)" }} />
             </div>
 
             {/* Tabs */}
-            <div className="flex rounded-xl p-1 mb-6" style={{ backgroundColor: colors.surface }}>
+            <div className="flex rounded-xl p-1 mb-6" style={{ backgroundColor: "var(--color-surface)" }}>
               {(["login", "register"] as Tab[]).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
                   className="flex-1 py-2 rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2"
                   style={{
-                    backgroundColor: tab === t ? colors.white : "transparent",
-                    color: tab === t ? colors.ink : colors.muted,
+                    backgroundColor: tab === t ? "var(--color-white)" : "transparent",
+                    color: tab === t ? "var(--color-ink)" : "var(--color-muted)",
                     boxShadow: tab === t ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
                     cursor: "pointer",
                   }}
@@ -251,12 +250,12 @@ export default function LoginPage() {
               </motion.div>
             </AnimatePresence>
 
-            <p className="text-center text-xs mt-6" style={{ color: colors.mutedLight }}>
+            <p className="text-center text-xs mt-6" style={{ color: "var(--color-muted-light)" }}>
               Ao continuar, você concorda com os{" "}
-              <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: colors.ink3 }}>
+              <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: "var(--color-ink-3)" }}>
                 Termos de uso
               </a>{" "}e a{" "}
-              <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: colors.ink3 }}>
+              <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70" style={{ color: "var(--color-ink-3)" }}>
                 Política de privacidade
               </a>.
             </p>
@@ -267,7 +266,7 @@ export default function LoginPage() {
       {/* ── Direita — imagem Paris ── */}
       <div
         className="hidden lg:flex items-center justify-center w-[48%] flex-shrink-0 p-6"
-        style={{ backgroundColor: colors.white }}
+        style={{ backgroundColor: "var(--color-white)" }}
       >
         <div className="relative w-full h-full rounded-3xl overflow-hidden">
           <Image

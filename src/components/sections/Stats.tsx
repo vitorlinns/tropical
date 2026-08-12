@@ -10,7 +10,6 @@ import {
   type RemixiconComponentType,
 } from "@remixicon/react";
 import { fadeUp } from "@/lib/animations";
-import { colors } from "@/lib/colors";
 import { fmtNumber } from "@/lib/utils";
 
 const stats: {
@@ -60,7 +59,7 @@ export function Stats() {
     <section
       className="py-24 relative overflow-hidden"
       aria-label="Números da Tropical Milhas"
-      style={{ backgroundColor: colors.brand }}
+      style={{ backgroundColor: "var(--color-brand)" }}
     >
       {/* Pattern */}
       <div
@@ -103,14 +102,14 @@ export function Stats() {
                     border: "1px solid rgba(255,255,255,0.3)",
                   }}
                 >
-                  <Icon size={20} style={{ color: colors.white }} aria-hidden="true" />
+                  <Icon size={20} style={{ color: "var(--color-white)" }} aria-hidden="true" />
                 </div>
 
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="w-full">
                   <p
                     className="font-display font-bold text-4xl md:text-5xl mb-1.5"
-                    style={{ color: colors.white }}
+                    style={{ color: "var(--color-white)" }}
                     aria-live="polite"
                   >
                     <Counter target={s.value} prefix={s.prefix} suffix={s.suffix} />

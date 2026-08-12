@@ -3,6 +3,52 @@
 @theme {
   --font-display: var(--font-bricolage);
   --font-body:    var(--font-dm-sans);
+
+  /* ── Marca ────────────────────────────────────────────────── */
+  --color-brand:        #FF6B35;
+  --color-brand-hover:  #E85D2B;
+  --color-brand-light:  #FFF1EC;
+  --color-brand-mid:    #FFD5C0;
+
+  /* ── Texto ────────────────────────────────────────────────── */
+  --color-ink:          #111111;
+  --color-ink-2:        #444444;
+  --color-ink-3:        #555555;
+  --color-ink-4:        #666666;
+  --color-muted:        #888888;
+  --color-muted-light:  #AAAAAA;
+  --color-muted-lighter:#CCCCCC;
+
+  /* ── Superfícies ──────────────────────────────────────────── */
+  --color-white:        #FFFFFF;
+  --color-surface:      #F9F7F4;
+  --color-surface-2:    #F0EDE9;
+  --color-dark:         #111111;
+
+  /* ── Bordas ───────────────────────────────────────────────── */
+  --color-border:       #E8E4DF;
+  --color-border-hover: #D4CFC9;
+
+  /* ── Overlay / transparência ──────────────────────────────── */
+  --color-white-10:     rgba(255,255,255,0.10);
+  --color-white-15:     rgba(255,255,255,0.15);
+  --color-white-20:     rgba(255,255,255,0.20);
+  --color-white-25:     rgba(255,255,255,0.25);
+  --color-white-50:     rgba(255,255,255,0.50);
+  --color-white-70:     rgba(255,255,255,0.70);
+  --color-white-80:     rgba(255,255,255,0.80);
+  --color-black-40:     rgba(0,0,0,0.40);
+
+  /* ── Estado ───────────────────────────────────────────────── */
+  --color-danger:            #EF4444;
+  --color-danger-light:      #FEF2F2;
+  --color-danger-border:     #FEE2E2;
+  --color-danger-strong:     #DC2626;
+  --color-danger-strong-dark:#B91C1C;
+
+  --color-success:           #16A34A;
+  --color-success-light:     #F0FDF4;
+  --color-success-dark:      #15803D;
 }
 
 @layer base {
@@ -10,12 +56,12 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #ffffff;
+    background: var(--color-white);
   }
 
   body {
-    background: #ffffff;
-    color: #111111;
+    background: var(--color-white);
+    color: var(--color-ink);
     overflow-x: hidden;
     font-family: var(--font-dm-sans), system-ui, sans-serif;
   }
@@ -35,14 +81,14 @@
 
   /* Estrutura de card — cor aplicada via style prop nos componentes */
   .card {
-    background: #ffffff;
-    border: 1px solid #E8E4DF;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
     border-radius: 1.25rem;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
   }
   .card:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-    border-color: #D4CFC9;
+    border-color: var(--color-border-hover);
   }
 
   .no-scrollbar::-webkit-scrollbar { display: none; }
